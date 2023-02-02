@@ -1,8 +1,60 @@
 @use './variables';
+@import './mixins';
 
 * {
     margin: 0;
-    font-family: 'Avenir Next Regular';
+    font-family: 'Avenir Next Bold';
     box-sizing: border-box;
     outline: none;
+}
+
+::-webkit-scrollbar {
+    display: none; 
+}
+
+%page-header {
+    font-size: 24px;
+    line-height: 32px;
+
+    @include tablet {
+        font-size: 33px;
+        line-height: 44px;
+    }
+}
+
+%section-header {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+%subheader {
+    font-size: 13px;
+    line-height: 18px;
+
+    @include tablet {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+
+%body-copy {
+    @extend %subheader;
+    font-family: 'Avenir Next Regular';
+}
+
+%label, %button {
+    font-size: 10px;
+    line-height: 20px;
+
+    @include tablet {
+        font-size: 12px;
+    }
+}
+
+h1 {
+    @extend %page-header;
+}
+
+input {
+    @extend %body-copy;
 }
