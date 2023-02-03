@@ -1,0 +1,47 @@
+@import '../../styles/partials/global';
+
+header {
+    .logo {
+        max-width: 120px;
+        max-height: 25px;
+    }
+
+    .search-box {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        input {
+            padding-left: $input-padding-mobile + 18px + $unit;
+            @include tablet {
+                padding-left: $input-padding-tablet + 18px + $unit;
+            }
+        }
+
+        .avatar {
+            display: block;
+
+            @include tablet {
+                display: none;
+            }
+        }
+    }
+
+    .upload-button {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .icon {
+            transform: translateX(-3px);
+        }
+    }
+
+    .avatar {
+        display: none;
+
+        @include tablet {
+            display: block;
+        }
+    }
+}

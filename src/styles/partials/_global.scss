@@ -1,10 +1,11 @@
-@use './variables';
+@import './variables';
 @import './mixins';
 
 * {
     margin: 0;
     font-family: 'Avenir Next Bold';
     box-sizing: border-box;
+    padding: 0;
     outline: none;
 }
 
@@ -55,6 +56,66 @@ h1 {
     @extend %page-header;
 }
 
+button {
+    @extend %button;
+    background-color: $bf-blue;
+    border: 0;
+    color: $bf-white;
+    height: 40px;
+    min-width: 150px;
+    border-radius: $radius;
+
+    &:hover {
+        background-color: $bf-dark-blue;
+        cursor: pointer;
+    }
+}
+
+.icon {
+    position: absolute;
+    cursor: pointer;
+    left: $input-padding-mobile;
+
+    @include tablet {
+        left: $input-padding-tablet;
+    }
+}
+
+.avatar {
+    width: $avatar-mobile;
+    height: $avatar-mobile;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 25% 50%;
+
+    @include tablet {
+        width: $avatar-tablet;
+        height: $avatar-tablet;
+    }
+}
+
 input {
     @extend %body-copy;
+    color: $bf-dark-black;
+    height: 36px;
+    min-width: 240px;
+    max-width: 100%;
+    border-radius: $radius;
+    padding: $input-padding-mobile;
+    border: 1px solid;
+    border-color: $bf-mercury;
+
+    &:focus {
+        border-width: 2px;
+        border-color: $bf-blue;
+    }
+
+    &.error {
+        border-color: $bf-error;
+    }
+
+    @include tablet {
+        height: 40px;
+        padding: $input-padding-tablet;
+    }
 }

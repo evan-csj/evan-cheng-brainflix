@@ -1,3 +1,4 @@
+// Color
 $bf-black: #323232;
 $bf-blue: #0095FF;
 $bf-silver: #AFAFAF;
@@ -10,8 +11,35 @@ $bf-alabaster: #FAFAFA;
 
 $bf-error: #D22D2D;
 
+// General
+$unit: 8px;
+$radius: 4px;
 
+// Window size
+$tablet-size: 768px;
+$desktop-size: 1280px;
 
+// Layout Grid
+$margin-mobile: 16px;
+$gutter-mobile: 16px;
+$column-mobile: calc((100vw - $margin-mobile * 2 - $gutter-mobile * 5) / 6);
+
+$margin-tablet: 36px;
+$gutter-tablet: 24px;
+$column-tablet: calc((100vw - $margin-tablet * 2 - $gutter-tablet * 11) / 12);
+
+$gutter-desktop: 24px;
+$column-desktop: 63px;
+
+// Input
+$input-padding-mobile: 12px;
+$input-padding-tablet: 16px;
+
+// Avatar
+$avatar-mobile: 36px;
+$avatar-tablet: 40px;
+
+// Font
 @font-face {
     font-family: 'Avenir Next Bold';
     src: url(../../assets/font/AvenirNextLTPro-Bold.otf) format('opentype'),
