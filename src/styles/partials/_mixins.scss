@@ -9,3 +9,35 @@
         @content;
     }
 }
+
+@mixin width-grid($n) {
+    width: 100%;
+    @include tablet {
+        width: calc($tablet-column * $n + $tablet-gutter * ($n - 1));
+    }
+    @include desktop {
+        width: calc($desktop-column * $n + $desktop-gutter * ($n - 1));
+    }
+}
+
+@mixin margin-LR {
+    margin-left: $margin-mobile;
+    margin-right: $margin-mobile;
+    @include tablet {
+        margin-left: $margin-tablet;
+        margin-right: $margin-tablet;
+    }
+    @include desktop {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@mixin margin-TB {
+    margin-top: $gutter-mobile;
+    margin-bottom: $gutter-mobile;
+    @include tablet {
+        margin-top: $gutter-tablet;
+        margin-bottom: $gutter-tablet;
+    }
+}

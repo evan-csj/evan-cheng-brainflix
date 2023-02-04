@@ -9,6 +9,10 @@
     outline: none;
 }
 
+body {
+    background-color: $bf-white;
+}
+
 ::-webkit-scrollbar {
     display: none; 
 }
@@ -97,6 +101,7 @@ button {
 input {
     @extend %body-copy;
     color: $bf-dark-black;
+    background-color: $bf-alabaster;
     height: 36px;
     min-width: 240px;
     max-width: 100%;

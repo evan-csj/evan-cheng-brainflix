@@ -1,7 +1,14 @@
 @import '../../styles/partials/global';
 
 header {
+    @include margin-LR;
+    @include margin-TB;
+    display: flex;
+    flex-direction: column;
+    gap: $gutter-mobile;
+
     .logo {
+        margin: 0 auto;
         max-width: 120px;
         max-height: 25px;
     }
@@ -9,9 +16,12 @@ header {
     .search-box {
         position: relative;
         display: flex;
+        justify-content: space-between;
         align-items: center;
+        gap: $gutter-mobile;
 
         input {
+            flex-grow: 1;
             padding-left: $input-padding-mobile + 18px + $unit;
             @include tablet {
                 padding-left: $input-padding-tablet + 18px + $unit;
@@ -27,13 +37,11 @@ header {
         }
     }
 
-    .upload-button {
+    button {
         position: relative;
-        display: flex;
-        align-items: center;
 
         .icon {
-            transform: translateX(-3px);
+            width: 16px;
         }
     }
 
