@@ -1,0 +1,11 @@
+@import '../../../styles/partials/global';
+
+.video-control {
+    width: 100%;
+    background-color: $bf-dark-black;
+}
+
+video {
+    display: block;
+    width: 100%;
+}

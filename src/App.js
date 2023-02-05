@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Header from "./components/Header/Header";
-import Video from "./components/Video/Video";
+import Main from "./components/Main/Main";
 import "./App.scss";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <Video />
+            <Main />
         </div>
     );
 }

@@ -2,125 +2,132 @@
 @import './mixins';
 
 * {
-    margin: 0;
-    font-family: 'Avenir Next Bold';
-    box-sizing: border-box;
-    padding: 0;
-    outline: none;
+	margin: 0;
+	font-family: 'Avenir Next Bold';
+	box-sizing: border-box;
+	padding: 0;
+	outline: none;
 }
 
 body {
-    background-color: $bf-white;
+	background-color: $bf-white;
 }
 
 ::-webkit-scrollbar {
-    display: none; 
+	display: none;
 }
 
 %page-header {
-    font-size: 24px;
-    line-height: 32px;
+	font-size: 24px;
+	line-height: 32px;
 
-    @include tablet {
-        font-size: 33px;
-        line-height: 44px;
-    }
+	@include tablet {
+		font-size: 33px;
+		line-height: 44px;
+	}
 }
 
 %section-header {
-    font-size: 12px;
-    line-height: 20px;
+	font-size: 12px;
+	line-height: 20px;
 }
 
 %subheader {
-    font-size: 13px;
-    line-height: 18px;
+	font-size: 13px;
+	line-height: 18px;
 
-    @include tablet {
-        font-size: 14px;
-        line-height: 22px;
-    }
+	@include tablet {
+		font-size: 14px;
+		line-height: 22px;
+	}
 }
 
 %body-copy {
-    @extend %subheader;
-    font-family: 'Avenir Next Regular';
+	@extend %subheader;
+	font-family: 'Avenir Next Regular';
 }
 
-%label, %button {
-    font-size: 10px;
-    line-height: 20px;
+%label,
+%button {
+	font-size: 10px;
+	line-height: 20px;
 
-    @include tablet {
-        font-size: 12px;
-    }
+	@include tablet {
+		font-size: 12px;
+	}
 }
 
 h1 {
-    @extend %page-header;
+	@extend %page-header;
+}
+
+h2 {
+	@extend %section-header;
+	color: $bf-silver;
+	text-transform: uppercase;
 }
 
 button {
-    @extend %button;
-    background-color: $bf-blue;
-    border: 0;
-    color: $bf-white;
-    height: 40px;
-    min-width: 150px;
-    border-radius: $radius;
+	@extend %button;
+	background-color: $bf-blue;
+	border: 0;
+	color: $bf-white;
+	height: 40px;
+	min-width: 150px;
+	border-radius: $radius;
 
-    &:hover {
-        background-color: $bf-dark-blue;
-        cursor: pointer;
-    }
+	&:hover {
+		background-color: $bf-dark-blue;
+		cursor: pointer;
+	}
 }
 
 .icon {
-    position: absolute;
-    cursor: pointer;
-    left: $input-padding-mobile;
+	position: absolute;
+	cursor: pointer;
+	left: $input-padding-mobile;
 
-    @include tablet {
-        left: $input-padding-tablet;
-    }
+	@include tablet {
+		left: $input-padding-tablet;
+	}
 }
 
 .avatar {
-    width: $avatar-mobile;
-    height: $avatar-mobile;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: 25% 50%;
+	width: $avatar-mobile;
+	height: $avatar-mobile;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: 25% 50%;
 
-    @include tablet {
-        width: $avatar-tablet;
-        height: $avatar-tablet;
-    }
+	@include tablet {
+		width: $avatar-tablet;
+		height: $avatar-tablet;
+	}
 }
 
 input {
-    @extend %body-copy;
-    color: $bf-dark-black;
-    background-color: $bf-alabaster;
-    height: 36px;
-    min-width: 240px;
-    max-width: 100%;
-    border-radius: $radius;
-    padding: $input-padding-mobile;
-    border: 1px solid;
-    border-color: $bf-mercury;
+	@extend %body-copy;
+	color: $bf-dark-black;
+	background-color: $bf-alabaster;
+	height: 36px;
+	min-width: 240px;
+	max-width: 100%;
+	border-radius: $radius;
+	padding: $input-padding-mobile;
+	border: 1px solid;
+	border-color: $bf-mercury;
 
-    &:focus {
-        border-width: 2px;
-        border-color: $bf-blue;
-    }
+	&:focus {
+		border-width: 2px;
+		border-color: $bf-blue;
+	}
 
-    &.error {
-        border-color: $bf-error;
-    }
+	&.error {
+		border-color: $bf-error;
+	}
 
-    @include tablet {
-        height: 40px;
-        padding: $input-padding-tablet;
-    }
+	@include tablet {
+		height: 40px;
+		padding: $input-padding-tablet;
+	}
 }
