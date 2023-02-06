@@ -6,7 +6,10 @@
 	font-family: 'Avenir Next Bold';
 	box-sizing: border-box;
 	padding: 0;
+	margin: 0;
 	outline: none;
+	list-style: none;
+	text-decoration: none;
 }
 
 body {
@@ -15,6 +18,10 @@ body {
 
 ::-webkit-scrollbar {
 	display: none;
+}
+
+::placeholder {
+	color: $bf-dark-black;
 }
 
 %page-header {
@@ -73,11 +80,12 @@ p {
 
 label {
 	@extend %label;
+	text-transform: uppercase;
 	color: $bf-silver;
 }
 
 button {
-	@extend %button;
+	text-transform: uppercase;
 	background-color: $bf-blue;
 	border: 0;
 	color: $bf-white;
@@ -88,16 +96,6 @@ button {
 	&:hover {
 		background-color: $bf-dark-blue;
 		cursor: pointer;
-	}
-}
-
-.icon {
-	position: absolute;
-	cursor: pointer;
-	left: $input-padding-mobile;
-
-	@include tablet {
-		left: $input-padding-tablet;
 	}
 }
 
@@ -114,13 +112,11 @@ button {
 	}
 }
 
-input {
+input, textarea {
+
 	@extend %body-copy;
-	color: $bf-dark-black;
 	background-color: $bf-alabaster;
-	height: 36px;
-	min-width: 240px;
-	max-width: 100%;
+	
 	border-radius: $radius;
 	padding: $input-padding-mobile;
 	border: 1px solid;
@@ -139,4 +135,10 @@ input {
 		height: 40px;
 		padding: $input-padding-tablet;
 	}
+}
+
+input {
+	height: 36px;
+	min-width: 240px;
+	max-width: 100%;
 }

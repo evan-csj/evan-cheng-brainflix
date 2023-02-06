@@ -1,55 +1,83 @@
 @import '../../styles/partials/global';
 
 header {
-    @include margin-LR;
-    @include margin-TB;
-    display: flex;
-    flex-direction: column;
-    gap: $gutter-mobile;
+	@include margin-LR;
+	@include padding-TB;
+	display: flex;
+	flex-direction: column;
+	gap: $gutter-mobile;
 
-    .logo {
-        margin: 0 auto;
-        max-width: 120px;
-        max-height: 25px;
-    }
+	.logo {
+		margin: 0 auto;
+		max-width: 120px;
+		max-height: 25px;
+	}
 
-    .search-box {
-        position: relative;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: $gutter-mobile;
+	.icon {
+		position: absolute;
+		cursor: pointer;
+		left: $input-padding-mobile;
 
-        input {
-            flex-grow: 1;
-            padding-left: $input-padding-mobile + 18px + $unit;
-            @include tablet {
-                padding-left: $input-padding-tablet + 18px + $unit;
-            }
-        }
+		@include tablet {
+			left: $input-padding-tablet;
+		}
+	}
 
-        .avatar {
-            display: block;
+	.search-box {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: $gutter-mobile;
 
-            @include tablet {
-                display: none;
-            }
-        }
-    }
+		input {
+			flex-grow: 1;
+			padding-left: $input-padding-mobile + 18px + $unit;
+			@include tablet {
+				padding-left: $input-padding-tablet + 18px + $unit;
+			}
+		}
 
-    button {
-        position: relative;
+		.icon {
+			height: 18px;
+			@include tablet {
+				height: 22px;
+			}
+		}
 
-        .icon {
-            width: 16px;
-        }
-    }
+		.avatar {
+			display: block;
 
-    .avatar {
-        display: none;
+			@include tablet {
+				display: none;
+			}
+		}
+	}
 
-        @include tablet {
-            display: block;
-        }
-    }
+	.button {
+		position: relative;
+		display: flex;
+		align-items: center;
+
+		button {
+			flex-grow: 1;
+			span {
+				display: inline-block;
+				@extend %button;
+				transform: translateY(2px);
+			}
+		}
+
+		.icon {
+			height: 20px;
+		}
+	}
+
+	.avatar {
+		display: none;
+
+		@include tablet {
+			display: block;
+		}
+	}
 }
