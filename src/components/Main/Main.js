@@ -1,24 +1,30 @@
 import React from 'react';
 import Video from './Video/Video';
 import Info from './Info/Info';
+import Comments from './Comments/Comments';
 import Next from './Next/Next';
 
 import videoDetailList from '../../data/video-details.json';
 import videoList from '../../data/videos.json';
 
+import './Main.scss';
+
 function Main() {
-	const activeVideo = videoDetailList[0];
+	const currentVideo = videoDetailList[0];
 
 	return (
-		<div>
-			<div>
-				<Video video={activeVideo} />
-				<Info video={activeVideo} />
+		<main>
+			<Video video={currentVideo} />
+			<div className="text-control">
+				<div className="text-control__current-video">
+					<Info video={currentVideo} />
+					<Comments video={currentVideo} />
+				</div>
+				<div className="text-control__next-videos">
+					<Next videos={videoList} />
+				</div>
 			</div>
-			<div>
-				<Next videoList={videoList} />
-			</div>
-		</div>
+		</main>
 	);
 }
 

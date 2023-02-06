@@ -51,3 +51,7 @@
         padding-bottom: 24px;
     }
 }
+
+@mixin divider {
+    border-bottom: 1px solid $bf-mercury;
+}
