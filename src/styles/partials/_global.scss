@@ -74,6 +74,10 @@ h2 {
 	text-transform: uppercase;
 }
 
+h3 {
+	@extend %subheader;
+}
+
 p {
 	@extend %body-copy;
 }
@@ -176,11 +180,13 @@ input,
 textarea {
 	@extend %body-copy;
 	background-color: $bf-alabaster;
-
 	border-radius: $radius;
 	padding: $input-padding-mobile;
 	border: 1px solid;
 	border-color: $bf-mercury;
+	resize: none;
+
+	width: 100%;
 
 	&:focus {
 		border-width: 2px;

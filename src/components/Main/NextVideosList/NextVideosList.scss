@@ -1,0 +1,10 @@
+@import '../../../styles/partials/mixins';
+
+.next-videos {
+    @include padding-TB;
+    @include flex-pattern;
+
+    &__list {
+        @include flex-pattern;
+    }
+}

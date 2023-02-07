@@ -1,0 +1,20 @@
+@import '../../../../styles/partials/mixins';
+
+.thumbnail {
+	@include flex-pattern(row, flex-start);
+
+	img {
+		width: $unit * 12;
+		height: $unit * 7;
+		border-radius: $radius;
+		background-color: $bf-mercury;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	div {
+        flex: 1 0;
+		@include flex-pattern;
+        gap: normal;
+	}
+}

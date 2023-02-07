@@ -1,3 +1,5 @@
+@import './variables';
+
 @mixin tablet {
 	@media only screen and (min-width: $tablet-size) {
 		@content;
@@ -12,11 +14,13 @@
 
 @mixin width-grid($n) {
 	width: 100%;
+
 	@include tablet {
-		width: calc($tablet-column * $n + $tablet-gutter * ($n - 1));
+		width: calc($column-tablet * $n + $gutter-tablet * ($n - 1));
 	}
+
 	@include desktop {
-		width: calc($desktop-column * $n + $desktop-gutter * ($n - 1));
+		width: calc($column-desktop * $n + $gutter-desktop * ($n - 1));
 	}
 }
 

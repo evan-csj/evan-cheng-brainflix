@@ -1,23 +1,17 @@
 import React from 'react';
+import * as global from '../../global';
 import viewIcon from '../../../assets/icons/views.svg';
 import likeIcon from '../../../assets/icons/likes.svg';
 
 import './Info.scss';
 
 function Info(props) {
-	const options = {
-		day: '2-digit',
-		month: '2-digit',
-		year: 'numeric',
-		timeZone: 'UTC',
-	};
-
 	const videoInfo = props.video;
 	const title = videoInfo.title;
 	const channel = videoInfo.channel;
 	const date = new Date(videoInfo.timestamp).toLocaleDateString(
 		'en-US',
-		options
+		global.options
 	);
 	const views = videoInfo.views;
 	const likes = videoInfo.likes;

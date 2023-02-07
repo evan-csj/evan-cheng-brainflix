@@ -1,4 +1,5 @@
 import React from 'react';
+import * as global from '../../global';
 import Comment from './Comment/Comment';
 import myAvatar from '../../../assets/images/Mohan-muruge.jpg';
 import addComment from '../../../assets/icons/add_comment.svg';
@@ -37,12 +38,17 @@ function CommentsList(props) {
 			</div>
 			<div className="comments__list">
 				{comments.map((comment, index) => {
+					const date = new Date(comment.timestamp).toLocaleDateString(
+						'en-US',
+						global.options
+					);
+
 					return (
 						<Comment
 							key={comment.id}
 							avatar={index < 3 ? '' : myAvatar}
 							name={comment.name}
-							date={comment.timestamp}
+							date={date}
 							text={comment.comment}
 							like={comment.likes}
 						/>

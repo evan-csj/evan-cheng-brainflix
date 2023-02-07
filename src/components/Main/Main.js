@@ -1,11 +1,11 @@
 import React from 'react';
 import Video from './Video/Video';
 import Info from './Info/Info';
-import CommentsList from './CommentsList/CommentsList';
-import Next from './Next/Next';
+import Comments from './CommentsList/CommentsList';
+import Next from './NextVideosList/NextVideosList';
 
 import videoDetailList from '../../data/video-details.json';
-import videoList from '../../data/videos.json';
+import thumbnailList from '../../data/videos.json';
 
 import './Main.scss';
 
@@ -18,10 +18,10 @@ function Main() {
 			<div className="text-control">
 				<div className="text-control__current-video">
 					<Info video={currentVideo} />
-					<CommentsList video={currentVideo} />
+					<Comments video={currentVideo} />
 				</div>
 				<div className="text-control__next-videos">
-					<Next videos={videoList} />
+					<Next videos={thumbnailList} />
 				</div>
 			</div>
 		</main>
