@@ -1,8 +1,24 @@
-@import '../../../styles/partials/global';
+@import '../../../styles/partials/variables';
+@import '../../../styles/partials/mixins';
 
 .comments {
+	@include flex-pattern;
+	gap: 0;
+
 	& > p {
-		@include padding-TB;
-		padding-top: 0;
+		padding-bottom: $gutter-mobile;
+	}
+
+	&__form {
+		@include flex-pattern(row);
+		@include divider;
+
+		.avatar {
+			transform: translateY(20px);
+		}
+
+		form {
+			@include flex-pattern;
+		}
 	}
 }
