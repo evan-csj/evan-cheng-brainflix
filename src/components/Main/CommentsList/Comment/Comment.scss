@@ -3,17 +3,21 @@
 article {
     @include padding-TB;
 	@include divider;
-	@include flex-pattern(row);
+	@include flex-pattern(row, flex-start);
+	@include flex-gap;
 
 	div.avatar {
 		flex-shrink: 0;
 	}
 
 	.comment {
+		flex: 1;
 		@include flex-pattern;
+		gap: $unit;
 
 		&__attribute {
 			@include flex-pattern(row);
+			@include flex-gap;
 		}
 	}
 }

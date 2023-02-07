@@ -44,6 +44,19 @@
 	}
 }
 
+@mixin padding-LR {
+	padding-left: $margin-mobile;
+	padding-right: $margin-mobile;
+	@include tablet {
+		padding-left: $margin-tablet;
+		padding-right: $margin-tablet;
+	}
+	@include desktop {
+		padding-left: auto;
+		padding-right: auto;
+	}
+}
+
 @mixin header {
 	padding: 24px 0 16px;
 
@@ -61,6 +74,9 @@
 	flex-direction: $dir;
 	justify-content: $jc;
 	align-items: $ai;
+}
+
+@mixin flex-gap {
 	gap: $gutter-mobile;
 
 	@include tablet {

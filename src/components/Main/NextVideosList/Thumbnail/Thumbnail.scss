@@ -2,6 +2,7 @@
 
 .thumbnail {
 	@include flex-pattern(row, flex-start);
+	@include flex-gap;
 
 	img {
 		width: $unit * 12;
@@ -10,11 +11,16 @@
 		background-color: $bf-mercury;
 		object-fit: cover;
 		object-position: center;
+
+		@include tablet {
+			width: $unit * 15;
+			height: $unit * 9;
+		}
 	}
 
 	div {
-        flex: 1 0;
+		flex: 1 0;
 		@include flex-pattern;
-        gap: normal;
+		gap: normal;
 	}
 }

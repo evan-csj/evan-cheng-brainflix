@@ -9,4 +9,8 @@
 video {
     display: block;
     width: 100%;
+
+    @include tablet {
+        @include padding-LR;
+    }
 }

@@ -4,24 +4,49 @@
 	&__title {
 		@include divider;
 
+		@include tablet {
+			border: 0;
+		}
+
 		h1 {
 			@include header;
+			@include tablet {
+				padding-bottom: $unit * 2;
+			}
 		}
 	}
 
 	&__data {
 		@include divider;
-
-		display: flex;
+		@include flex-pattern(row);
+		gap: 0;
 
 		& > div {
 			@include padding-TB;
 			@include flex-pattern;
+			@include flex-gap;
 			flex: 1;
+
+			@include tablet {
+				padding: 0;
+				flex: auto;
+				flex-direction: row;
+				justify-content: flex-start;
+			}
 
 			div {
 				@include flex-pattern(row, flex-start, center);
 				gap: $unit;
+
+				@include tablet {
+					padding-bottom: $unit;
+				}
+			}
+		}
+
+		div:nth-child(2) {
+			@include tablet {
+				justify-content: flex-end;
 			}
 		}
 	}

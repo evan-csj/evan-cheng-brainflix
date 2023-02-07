@@ -4,22 +4,44 @@
 	@include flex-pattern;
 	gap: 0;
 
+	& > p {
+		@include tablet {
+			padding-top: $gutter-tablet;
+		}
+	}
+
 	&__form {
 		@include flex-pattern(row);
 		@include padding-TB;
 		@include divider;
+		@include flex-gap;
+		@include tablet {
+			align-items: flex-end;
+		}
 
 		.avatar {
 			transform: translateY(20px);
+			@include tablet {
+				transform: none;
+			}
 		}
 
 		form {
 			@include flex-pattern;
+			@include flex-gap;
 			flex: 1;
 
 			.text-input {
 				@include flex-pattern;
 				gap: 0;
+			}
+
+			@include tablet {
+				flex-direction: row;
+				align-items: flex-end;
+				.text-input {
+					flex: 1;
+				}
 			}
 		}
 	}

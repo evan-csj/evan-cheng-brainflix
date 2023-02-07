@@ -4,39 +4,59 @@ header {
 	@include margin-LR;
 	@include padding-TB;
 	@include flex-pattern;
+	@include flex-gap;
 
 	.logo {
 		margin: 0 auto;
 		max-width: 120px;
 		max-height: 25px;
+
+		@include tablet {
+			margin: 0;
+		}
 	}
 
-	.search-box {
-		position: relative;
-		@include flex-pattern($dir: row, $ai: center);
+	.user {
+		@include flex-pattern;
+		@include flex-gap;
 
-		input {
-			flex-grow: 1;
-			padding-left: $input-padding-mobile + 18px + $unit;
-			@include tablet {
-				padding-left: $input-padding-tablet + 18px + $unit;
+		@include tablet {
+			flex-direction: row;
+		}
+
+		.search-box {
+			position: relative;
+			@include flex-pattern($dir: row, $ai: center);
+			@include flex-gap;
+
+			input {
+				flex-grow: 1;
+				padding-left: $input-padding-mobile + 18px + $unit;
+				@include tablet {
+					padding-left: $input-padding-tablet + 18px + $unit;
+				}
+			}
+
+			.avatar {
+				display: block;
+
+				@include tablet {
+					display: none;
+				}
 			}
 		}
 
 		.avatar {
-			display: block;
+			display: none;
 
 			@include tablet {
-				display: none;
+				display: block;
 			}
 		}
 	}
 
-	.avatar {
-		display: none;
-
-		@include tablet {
-			display: block;
-		}
+	@include tablet {
+		flex-direction: row;
+		align-items: center;
 	}
 }

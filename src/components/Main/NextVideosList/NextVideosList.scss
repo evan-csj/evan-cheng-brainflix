@@ -3,8 +3,14 @@
 .next-videos {
     @include padding-TB;
     @include flex-pattern;
+    @include flex-gap;
+
+    @include tablet {
+        width: $unit * 38;
+    }
 
     &__list {
         @include flex-pattern;
+        @include flex-gap;
     }
 }

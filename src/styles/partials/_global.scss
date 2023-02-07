@@ -56,11 +56,11 @@ body {
 
 %label,
 %button {
-	font-size: 10px;
+	font-size: 12px;
 	line-height: 20px;
 
 	@include tablet {
-		font-size: 12px;
+		font-size: 10px;
 	}
 }
 
@@ -69,13 +69,13 @@ h1 {
 }
 
 h2 {
-	@extend %section-header;
+	@extend %subheader;
 	color: $bf-silver;
 	text-transform: uppercase;
 }
 
 h3 {
-	@extend %subheader;
+	@extend %section-header;
 }
 
 p {
@@ -114,10 +114,6 @@ label {
 		position: absolute;
 		cursor: pointer;
 		left: $input-padding-mobile;
-
-		@include tablet {
-			left: $input-padding-tablet;
-		}
 	}
 
 	&--search {
@@ -154,10 +150,8 @@ label {
 
 		span {
 			display: inline-block;
-			@extend %body-copy;
-			font-weight: 700;
+			@extend %button;
 			line-height: normal;
-			transform: translateY(2px);
 		}
 	}
 }
@@ -185,7 +179,8 @@ textarea {
 	border: 1px solid;
 	border-color: $bf-mercury;
 	resize: none;
-
+	min-width: 240px;
+	max-width: 100%;
 	width: 100%;
 
 	&:focus {
@@ -196,15 +191,19 @@ textarea {
 	&.error {
 		border-color: $bf-error;
 	}
+}
 
+input {
+	height: 36px;
 	@include tablet {
 		height: 40px;
 		padding: $input-padding-tablet;
 	}
 }
 
-input {
-	height: 36px;
-	min-width: 240px;
-	max-width: 100%;
+textarea {
+	@include tablet {
+		height: 40px;
+		padding-top: $unit;
+	}
 }

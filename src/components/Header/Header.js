@@ -10,18 +10,24 @@ function Header() {
 	return (
 		<header>
 			<img className="logo" src={logo} alt="Logo" />
-			<div className="search-box">
-				<input className="no-error" type="text" placeholder="Search" />
-				<img className="icon--search" src={search} alt="search" />
+			<div className='user'>
+				<div className="search-box">
+					<input
+						className="no-error"
+						type="text"
+						placeholder="Search"
+					/>
+					<img className="icon--search" src={search} alt="search" />
+					<img className="avatar" src={avatar} alt="avatar" />
+				</div>
+				<div className="button">
+					<button type="submit">
+						<span>Upload</span>
+					</button>
+					<img className="icon--button" src={upload} alt="upload" />
+				</div>
 				<img className="avatar" src={avatar} alt="avatar" />
 			</div>
-			<div className="button">
-				<button type="submit">
-					<span>Upload</span>
-				</button>
-				<img className="icon--button" src={upload} alt="upload" />
-			</div>
-			<img className="avatar" src={avatar} alt="avatar" />
 		</header>
 	);
 }
