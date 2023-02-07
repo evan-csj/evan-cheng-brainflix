@@ -84,18 +84,77 @@ label {
 	color: $bf-silver;
 }
 
-button {
-	text-transform: uppercase;
-	background-color: $bf-blue;
-	border: 0;
-	color: $bf-white;
-	height: 40px;
-	min-width: 150px;
-	border-radius: $radius;
+.text {
+	@extend %body-copy;
+	line-height: normal;
 
-	&:hover {
-		background-color: $bf-dark-blue;
+	&--number {
+		font-family: 'Avenir Next Regular';
+		color: $bf-silver;
+	}
+
+	&--name {
+		color: $bf-dark-black;
+		font-family: 'Avenir Next Bold';
+	}
+}
+
+.icon {
+	&--data {
+		height: 10px;
+		transform: translateY(-2px);
+	}
+
+	&--button,
+	&--search {
+		position: absolute;
 		cursor: pointer;
+		left: $input-padding-mobile;
+
+		@include tablet {
+			left: $input-padding-tablet;
+		}
+	}
+
+	&--search {
+		height: 18px;
+		@include tablet {
+			height: 22px;
+		}
+	}
+
+	&--button {
+		height: 20px;
+	}
+}
+
+.button {
+	position: relative;
+	display: flex;
+	align-items: center;
+
+	button {
+		flex-grow: 1;
+		text-transform: uppercase;
+		background-color: $bf-blue;
+		border: 0;
+		color: $bf-white;
+		height: 40px;
+		min-width: 150px;
+		border-radius: $radius;
+
+		&:hover {
+			background-color: $bf-dark-blue;
+			cursor: pointer;
+		}
+
+		span {
+			display: inline-block;
+			@extend %body-copy;
+			font-weight: 700;
+			line-height: normal;
+			transform: translateY(2px);
+		}
 	}
 }
 
@@ -105,6 +164,7 @@ button {
 	border-radius: 50%;
 	object-fit: cover;
 	object-position: 25% 50%;
+	background-color: $bf-silver;
 
 	@include tablet {
 		width: $avatar-tablet;
@@ -112,11 +172,11 @@ button {
 	}
 }
 
-input, textarea {
-
+input,
+textarea {
 	@extend %body-copy;
 	background-color: $bf-alabaster;
-	
+
 	border-radius: $radius;
 	padding: $input-padding-mobile;
 	border: 1px solid;

@@ -14,43 +14,19 @@
 
 		display: flex;
 
-		span {
-			@extend %label;
-            line-height: normal;
-			font-family: 'Avenir Next Regular';
-			color: $bf-silver;
-		}
-
 		& > div {
-            @include padding-TB;
+			@include padding-TB;
+			@include flex-pattern;
 			flex: 1;
-			display: flex;
-			flex-direction: column;
-            gap: $gutter-mobile;
-		}
-
-		& > div:nth-child(1) {
-			.channel {
-				color: $bf-dark-black;
-				font-family: 'Avenir Next Bold';
-			}
-		}
-
-		& > div:nth-child(2) {
-			.icon {
-				height: 10px;
-                transform: translateY(-2px);
-			}
 
 			div {
-				display: flex;
-				align-items: center;
-                gap: $unit;
+				@include flex-pattern(row, flex-start, center);
+				gap: $unit;
 			}
 		}
 	}
 
-    &__description {
-        @include padding-TB;
-    }
+	&__description {
+		@include padding-TB;
+	}
 }

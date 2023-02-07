@@ -29,17 +29,25 @@ function Info(props) {
 			</div>
 			<div className="info__data">
 				<div>
-					<span className="channel">By {channel}</span>
-					<span className="date">{date}</span>
+					<span className="text text--name">By {channel}</span>
+					<span className="text text--number">{date}</span>
 				</div>
 				<div>
-					<div className="view">
-						<img className="icon" src={viewIcon} alt="view icon" />
-						<span>{views}</span>
+					<div>
+						<img
+							className="icon--data"
+							src={viewIcon}
+							alt="view icon"
+						/>
+						<span className="text text--number">{views}</span>
 					</div>
-					<div className="like">
-						<img className="icon" src={likeIcon} alt="like icon" />
-						<span>{likes}</span>
+					<div>
+						<img
+							className="icon--data"
+							src={likeIcon}
+							alt="like icon"
+						/>
+						<span className="text text--number">{likes}</span>
 					</div>
 				</div>
 			</div>

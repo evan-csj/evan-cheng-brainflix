@@ -1,7 +1,7 @@
 import React from 'react';
 import Video from './Video/Video';
 import Info from './Info/Info';
-import Comments from './Comments/Comments';
+import CommentsList from './CommentsList/CommentsList';
 import Next from './Next/Next';
 
 import videoDetailList from '../../data/video-details.json';
@@ -18,7 +18,7 @@ function Main() {
 			<div className="text-control">
 				<div className="text-control__current-video">
 					<Info video={currentVideo} />
-					<Comments video={currentVideo} />
+					<CommentsList video={currentVideo} />
 				</div>
 				<div className="text-control__next-videos">
 					<Next videos={videoList} />

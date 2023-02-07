@@ -1,0 +1,19 @@
+@import '../../../../styles/partials/global';
+
+article {
+    @include padding-TB;
+	@include divider;
+	@include flex-pattern(row);
+
+	div.avatar {
+		flex-shrink: 0;
+	}
+
+	.comment {
+		@include flex-pattern;
+
+		&__attribute {
+			@include flex-pattern(row);
+		}
+	}
+}

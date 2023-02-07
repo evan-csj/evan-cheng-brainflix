@@ -3,9 +3,7 @@
 header {
 	@include margin-LR;
 	@include padding-TB;
-	display: flex;
-	flex-direction: column;
-	gap: $gutter-mobile;
+	@include flex-pattern;
 
 	.logo {
 		margin: 0 auto;
@@ -13,22 +11,9 @@ header {
 		max-height: 25px;
 	}
 
-	.icon {
-		position: absolute;
-		cursor: pointer;
-		left: $input-padding-mobile;
-
-		@include tablet {
-			left: $input-padding-tablet;
-		}
-	}
-
 	.search-box {
 		position: relative;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: $gutter-mobile;
+		@include flex-pattern($dir: row, $ai: center);
 
 		input {
 			flex-grow: 1;
@@ -38,38 +23,12 @@ header {
 			}
 		}
 
-		.icon {
-			height: 18px;
-			@include tablet {
-				height: 22px;
-			}
-		}
-
 		.avatar {
 			display: block;
 
 			@include tablet {
 				display: none;
 			}
-		}
-	}
-
-	.button {
-		position: relative;
-		display: flex;
-		align-items: center;
-
-		button {
-			flex-grow: 1;
-			span {
-				display: inline-block;
-				@extend %button;
-				transform: translateY(2px);
-			}
-		}
-
-		.icon {
-			height: 20px;
 		}
 	}
 
