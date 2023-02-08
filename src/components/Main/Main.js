@@ -11,6 +11,7 @@ import './Main.scss';
 
 function Main() {
 	const currentVideo = videoDetailList[0];
+	const currentVideoId = currentVideo.id;
 
 	return (
 		<main>
@@ -21,7 +22,7 @@ function Main() {
 					<Comments video={currentVideo} />
 				</div>
 				<div className="text-control__next-videos">
-					<Next videos={thumbnailList} />
+					<Next videos={thumbnailList} thisVideoId={currentVideoId}/>
 				</div>
 			</div>
 		</main>
