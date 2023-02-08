@@ -1,10 +1,12 @@
 @import '../../../../styles/partials/mixins';
 
 article {
-    @include padding-TB;
-	@include divider;
+	@include padding-TB;
 	@include flex-pattern(row, flex-start);
 	@include flex-gap;
+	@include desktop {
+		padding-right: $gutter-desktop;
+	}
 
 	div.avatar {
 		flex-shrink: 0;
@@ -20,4 +22,8 @@ article {
 			@include flex-gap;
 		}
 	}
+}
+
+article.comment--not-last {
+	@include divider('bottom');
 }

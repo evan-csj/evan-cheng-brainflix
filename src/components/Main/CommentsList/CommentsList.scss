@@ -6,17 +6,23 @@
 
 	& > p {
 		@include tablet {
-			padding-top: $gutter-tablet;
+			padding-top: calc($gutter-tablet / 2);
+		}		
+		@include desktop {
+			padding-top: $gutter-desktop;
 		}
 	}
 
 	&__form {
 		@include flex-pattern(row);
 		@include padding-TB;
-		@include divider;
+		@include divider("bottom");
 		@include flex-gap;
 		@include tablet {
 			align-items: flex-end;
+		}
+		@include desktop {
+			padding-right: $gutter-desktop;
 		}
 
 		.avatar {

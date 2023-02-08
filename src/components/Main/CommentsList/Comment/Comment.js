@@ -9,8 +9,15 @@ function Comment(props) {
 		<div className="avatar"></div>
 	);
 
+	console.log("Index", props.index)
+
+	let commentClass;
+	if (props.index !== props.length - 1) {
+		commentClass = 'comment--not-last';
+	}
+
 	return (
-		<article>
+		<article className={commentClass}>
 			{avatar}
 			<div className="comment">
 				<div className="comment__attribute">

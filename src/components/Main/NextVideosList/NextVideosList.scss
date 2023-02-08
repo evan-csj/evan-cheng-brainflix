@@ -1,15 +1,29 @@
 @import '../../../styles/partials/mixins';
 
-.next-videos {
-    @include padding-TB;
+.text-control__next-videos {
+    @include divider("top");
     @include flex-pattern;
-    @include flex-gap;
+    gap: 0;
+    padding-bottom: $margin-mobile;
 
     @include tablet {
-        width: $unit * 38;
+        padding-bottom: $margin-tablet
     }
 
-    &__list {
+    @include desktop {
+		padding-left: $gutter-desktop;
+        @include divider("left");
+	}
+
+    h2 {
+        @include padding-TB;
+        @include desktop {
+            @include header;
+        }
+    }
+
+    .next-videos-list {
+        max-width: $width-next-video;
         @include flex-pattern;
         @include flex-gap;
     }

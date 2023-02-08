@@ -3,13 +3,18 @@
 main {
 	.text-control {
 		@include margin-LR;
+		@include flex-pattern;
+		gap: 0;
+		@include desktop {
+			flex-direction: row;
+			@include width-grid(12);
+		}
+		&__current-video {
+			flex: 2;
+		}
 
-		// &__current-video {
-
-		// }
-
-		// &__next-videos {
-
-		// }
+		&__next-videos {
+			flex: 1;
+		}
 	}
 }

@@ -5,6 +5,9 @@ header {
 	@include padding-TB;
 	@include flex-pattern;
 	@include flex-gap;
+	@include desktop {
+		@include width-grid(12);
+	}
 
 	.logo {
 		margin: 0 auto;

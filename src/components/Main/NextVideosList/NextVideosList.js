@@ -8,9 +8,9 @@ function NextVideosList(props) {
 	console.log(thumbnailList)
 
 	return (
-		<div className="next-videos">
+		<>
 			<h2>Next Videos</h2>
-			<div className="next-videos__list">
+			<div className="next-videos-list">
 				{thumbnailList.map(thumbnail => {
 					return (
 						<Thumbnail
@@ -22,7 +22,7 @@ function NextVideosList(props) {
 					);
 				})}
 			</div>
-		</div>
+		</>
 	);
 }
 

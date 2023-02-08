@@ -2,15 +2,21 @@
 @import '../../../styles/partials/mixins';
 
 .video-control {
-    width: 100%;
-    background-color: $bf-dark-black;
+	width: 100%;
+	background-color: $bf-dark-black;
 }
 
 video {
-    display: block;
-    width: 100%;
+	display: block;
+	width: 100%;
 
-    @include tablet {
-        @include padding-LR;
-    }
+	@include tablet {
+		@include padding-LR;
+	}
+
+	@include desktop {
+		@include margin-LR;
+		@include width-grid(10);
+		padding: 0;
+	}
 }

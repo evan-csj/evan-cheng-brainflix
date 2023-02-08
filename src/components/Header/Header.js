@@ -10,7 +10,7 @@ function Header() {
 	return (
 		<header>
 			<img className="logo" src={logo} alt="Logo" />
-			<div className='user'>
+			<div className="user">
 				<div className="search-box">
 					<input
 						className="no-error"
@@ -26,7 +26,9 @@ function Header() {
 					</button>
 					<img className="icon--button" src={upload} alt="upload" />
 				</div>
-				<img className="avatar" src={avatar} alt="avatar" />
+				<div className="avatar">
+					<img className="avatar" src={avatar} alt="avatar" />
+				</div>
 			</div>
 		</header>
 	);

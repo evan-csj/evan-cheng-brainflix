@@ -24,12 +24,12 @@
 	}
 }
 
-@mixin margin-LR {
-	margin-left: $margin-mobile;
-	margin-right: $margin-mobile;
+@mixin margin-LR($scale: 1) {
+	margin-left: $margin-mobile * $scale;
+	margin-right: $margin-mobile * $scale;
 	@include tablet {
-		margin-left: $margin-tablet;
-		margin-right: $margin-tablet;
+		margin-left: $margin-tablet * $scale;
+		margin-right: $margin-tablet * $scale;
 	}
 	@include desktop {
 		margin-left: auto;
@@ -44,12 +44,12 @@
 	}
 }
 
-@mixin padding-LR {
-	padding-left: $margin-mobile;
-	padding-right: $margin-mobile;
+@mixin padding-LR($scale: 1) {
+	padding-left: $margin-mobile * $scale;
+	padding-right: $margin-mobile * $scale;
 	@include tablet {
-		padding-left: $margin-tablet;
-		padding-right: $margin-tablet;
+		padding-left: $margin-tablet * $scale;
+		padding-right: $margin-tablet * $scale;
 	}
 	@include desktop {
 		padding-left: auto;
@@ -65,8 +65,19 @@
 	}
 }
 
-@mixin divider {
-	border-bottom: 1px solid $bf-mercury;
+@mixin divider($p) {
+	border: 0;
+	@if $p == 'left' {
+		border-left: 1px solid $bf-mercury;
+	} @else if $p == 'top' {
+		border-top: 1px solid $bf-mercury;
+	} @else if $p == 'right' {
+		border-right: 1px solid $bf-mercury;
+	} @else if $p == 'bottom' {
+		border-bottom: 1px solid $bf-mercury;
+	} @else {
+		border: 0;
+	}
 }
 
 @mixin flex-pattern($dir: column, $jc: space-between, $ai: normal) {
@@ -74,6 +85,7 @@
 	flex-direction: $dir;
 	justify-content: $jc;
 	align-items: $ai;
+	flex-wrap: nowrap;
 }
 
 @mixin flex-gap {
