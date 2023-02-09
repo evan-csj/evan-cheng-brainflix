@@ -46,6 +46,7 @@ function CommentsList(props) {
 					return (
 						<Comment
 							key={comment.id}
+							id={comment.id}
 							index={index}
 							length={comments.length}
 							avatar={index < 3 ? '' : myAvatar}

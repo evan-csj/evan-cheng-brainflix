@@ -13,13 +13,15 @@ function NextVideosList(props) {
 			<div className="next-videos-list">
 				{thumbnailList
 					.filter(thumbnail => thumbnail.id !== currentVideoId)
-					.map(thumbnail => {
+					.map((thumbnail, index) => {
 						return (
 							<Thumbnail
-								key={thumbnail.id}
+								key={index}
+								id={thumbnail.id}
 								image={thumbnail.image}
 								title={thumbnail.title}
 								channel={thumbnail.channel}
+								changeActiveVideo={props.changeActiveVideo}
 							/>
 						);
 					})}

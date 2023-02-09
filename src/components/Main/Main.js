@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Video from './Video/Video';
 import Info from './Info/Info';
 import Comments from './CommentsList/CommentsList';
-import Next from './NextVideosList/NextVideosList';
+import NextVideo from './NextVideosList/NextVideosList';
 
 import videoDetailList from '../../data/video-details.json';
 import thumbnailList from '../../data/videos.json';
@@ -10,19 +10,29 @@ import thumbnailList from '../../data/videos.json';
 import './Main.scss';
 
 function Main() {
-	const currentVideo = videoDetailList[0];
-	const currentVideoId = currentVideo.id;
+	const defaultVideo = videoDetailList[0];
+	const [activeVideo, setActiveVideo] = useState(defaultVideo);
+	const changeActiveVideo = id => {
+		const nextVideo = videoDetailList.filter(
+			videoDetail => videoDetail.id === id
+		);
+		setActiveVideo(nextVideo[0]);
+	};
 
 	return (
 		<main>
-			<Video video={currentVideo} />
+			<Video video={activeVideo} />
 			<div className="text-control">
 				<div className="text-control__current-video">
-					<Info video={currentVideo} />
-					<Comments video={currentVideo} />
+					<Info video={activeVideo} />
+					<Comments video={activeVideo} />
 				</div>
 				<div className="text-control__next-videos">
-					<Next videos={thumbnailList} thisVideoId={currentVideoId}/>
+					<NextVideo
+						videos={thumbnailList}
+						thisVideoId={activeVideo.id}
+						changeActiveVideo={changeActiveVideo}
+					/>
 				</div>
 			</div>
 		</main>

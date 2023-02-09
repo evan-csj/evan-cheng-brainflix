@@ -16,6 +16,7 @@ $unit: 8px;
 $radius: 4px;
 
 // Window size
+$mobile-size: 320px;
 $tablet-size: 768px;
 $desktop-size: 1280px;
 
@@ -23,10 +24,12 @@ $desktop-size: 1280px;
 $margin-mobile: 16px;
 $gutter-mobile: 16px;
 $column-mobile: calc((100vw - $margin-mobile * 2 - $gutter-mobile * 5) / 6);
+$min-column-mobile: calc(($mobile-size - $margin-mobile * 2 - $gutter-mobile * 5) / 6);
 
 $margin-tablet: 36px;
 $gutter-tablet: 24px;
 $column-tablet: calc((100vw - $margin-tablet * 2 - $gutter-tablet * 11) / 12);
+$min-column-tablet: calc(($tablet-size - $margin-tablet * 2 - $gutter-tablet * 11) / 12);
 
 $gutter-desktop: 24px;
 $column-desktop: 63px;
@@ -39,8 +42,8 @@ $input-padding-tablet: 16px;
 $avatar-mobile: 36px;
 $avatar-tablet: 40px;
 
-// Next Video
-$width-next-video: 320px - $margin-mobile;
+// Next Video Section
+$width-next-videos: 320px - $margin-mobile;
 
 // Font
 @font-face {

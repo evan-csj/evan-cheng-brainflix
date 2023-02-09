@@ -23,8 +23,14 @@
     }
 
     .next-videos-list {
-        max-width: $width-next-video;
         @include flex-pattern;
         @include flex-gap;
+        width: $mobile-size - $margin-mobile * 2;
+        @include tablet {
+            @include width-grid-fix(5.5);
+        }
+        @include desktop {
+            @include width-grid(3.7);
+        }
     }
 }

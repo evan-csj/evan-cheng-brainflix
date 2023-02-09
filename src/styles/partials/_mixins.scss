@@ -47,10 +47,12 @@
 @mixin padding-LR($scale: 1) {
 	padding-left: $margin-mobile * $scale;
 	padding-right: $margin-mobile * $scale;
+
 	@include tablet {
 		padding-left: $margin-tablet * $scale;
 		padding-right: $margin-tablet * $scale;
 	}
+
 	@include desktop {
 		padding-left: auto;
 		padding-right: auto;
@@ -93,5 +95,13 @@
 
 	@include tablet {
 		gap: $gutter-tablet;
+	}
+}
+
+@mixin width-grid-fix($n) {
+	width: calc($min-column-mobile * $n + $gutter-mobile * ($n - 1));
+
+	@include tablet {
+		width: calc($min-column-tablet * $n + $gutter-tablet * ($n - 1));
 	}
 }
