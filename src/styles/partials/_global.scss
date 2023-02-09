@@ -162,7 +162,6 @@ label {
 	border-radius: 50%;
 	object-fit: cover;
 	object-position: 25% 50%;
-	background-color: $bf-silver;
 
 	@include tablet {
 		width: $avatar-tablet;
@@ -202,6 +201,7 @@ input {
 }
 
 textarea {
+	padding: $input-padding-mobile 0 0 $input-padding-mobile;
 	@include tablet {
 		height: 40px;
 		padding-top: $unit;
