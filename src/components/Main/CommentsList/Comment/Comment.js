@@ -9,7 +9,7 @@ function Comment(props) {
 		<div className="avatar"></div>
 	);
 
-	let commentClass;
+	let commentClass = '';
 	if (props.index !== props.length - 1) {
 		commentClass = 'comment--not-last';
 	}

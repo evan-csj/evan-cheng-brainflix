@@ -1,43 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { v4 as uuid } from 'uuid';
+import dayjs from 'dayjs';
 import * as global from '../../global';
 import Comment from './Comment/Comment';
+import Form from './CommentForm/CommentForm';
 import myAvatar from '../../../assets/images/Mohan-muruge.jpg';
-import addComment from '../../../assets/icons/add_comment.svg';
 import './CommentsList.scss';
 
 function CommentsList(props) {
-	const comments = props.video.comments;
+	const comments = props.videoComments;
+	const userName = 'First-Name Last-Name';
+	const [activeVideoComments, setActiveVideoComments] = useState(comments);
+
+	const addComment = content => {
+		const newComment = {
+			id: uuid(),
+			name: userName,
+			comment: content,
+			like: 0,
+			timestamp: dayjs(),
+		};
+		const newVideoComments = [newComment, ...activeVideoComments];
+		setActiveVideoComments(newVideoComments);
+	};
 
 	return (
 		<div className="comments">
-			<p className="text text--name">{comments.length} Comments</p>
+			<p className="text text--name">{activeVideoComments.length} Comments</p>
 			<div className="comments__form">
 				<img className="avatar" src={myAvatar} alt="avatar" />
-				<form>
-					<div className="text-input">
-						<label>Join the conversation</label>
-						<textarea
-							type="textarea"
-							name="comment"
-							rows="5"
-							placeholder="Add a new comment"
-							required
-						/>
-					</div>
-					<div className="button">
-						<button type="submit">
-							<span>Comment</span>
-						</button>
-						<img
-							className="icon--button"
-							src={addComment}
-							alt="add comment"
-						/>
-					</div>
-				</form>
+				<Form addComment={addComment} />
 			</div>
 			<div className="comments__list">
-				{comments.map((comment, index) => {
+				{activeVideoComments.map((comment, index) => {
 					const date = new Date(comment.timestamp).toLocaleDateString(
 						'en-US',
 						global.options
@@ -48,8 +43,8 @@ function CommentsList(props) {
 							key={comment.id}
 							id={comment.id}
 							index={index}
-							length={comments.length}
-							avatar={index < 3 ? '' : myAvatar}
+							length={activeVideoComments.length}
+							avatar={comment.name === userName ? myAvatar : ''}
 							name={comment.name}
 							date={date}
 							text={comment.comment}

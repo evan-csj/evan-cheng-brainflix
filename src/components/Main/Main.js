@@ -12,6 +12,7 @@ import './Main.scss';
 function Main() {
 	const defaultVideo = videoDetailList[0];
 	const [activeVideo, setActiveVideo] = useState(defaultVideo);
+
 	const changeActiveVideo = id => {
 		const nextVideo = videoDetailList.filter(
 			videoDetail => videoDetail.id === id
@@ -25,7 +26,7 @@ function Main() {
 			<div className="text-control">
 				<div className="text-control__current-video">
 					<Info video={activeVideo} />
-					<Comments video={activeVideo} />
+					<Comments videoComments={activeVideo.comments} />
 				</div>
 				<div className="text-control__next-videos">
 					<NextVideo
