@@ -39,7 +39,6 @@ function CommentsList(props) {
 			</div>
 			<div className="comments__list">
 				{activeVideoComments.map((comment, index) => {
-					// const date = dayjs(comment.timestamp).fromNow();
 					const date = global.DynamicDate(comment.timestamp);
 
 					return (

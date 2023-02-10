@@ -9,10 +9,7 @@ function Info(props) {
 	const videoInfo = props.video;
 	const title = videoInfo.title;
 	const channel = videoInfo.channel;
-	const date = new Date(videoInfo.timestamp).toLocaleDateString(
-		'en-US',
-		global.options
-	);
+	const date = global.DynamicDate(videoInfo.timestamp);
 	const views = videoInfo.views;
 	const likes = videoInfo.likes;
 

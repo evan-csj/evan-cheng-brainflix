@@ -42,13 +42,11 @@ dayjs.updateLocale('en', {
 	},
 });
 
-export const options = {
-	day: '2-digit',
-	month: '2-digit',
-	year: 'numeric',
-};
-
 export const DynamicDate = timestamp => {
-	const display = dayjs(timestamp).fromNow();
-	return display;
+	const time = dayjs(timestamp);
+	if (dayjs().diff(time, 'month', true) <= 12) {
+		return time.fromNow();
+	} else {
+		return time.format('MM/DD/YYYY');
+	}
 };
