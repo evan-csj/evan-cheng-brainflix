@@ -20,7 +20,9 @@ article {
 
 		&__attribute {
 			@include flex-pattern(row);
-			@include flex-gap;
+			.text--number {
+				text-align: right;
+			}
 		}
 	}
 }

@@ -8,6 +8,9 @@ import myAvatar from '../../../assets/images/Mohan-muruge.jpg';
 import './CommentsList.scss';
 
 function CommentsList(props) {
+	const relativeTime = require('dayjs/plugin/relativeTime');
+	dayjs.extend(relativeTime);
+	
 	const comments = props.videoComments;
 	const userName = 'First-Name Last-Name';
 	const [activeVideoComments, setActiveVideoComments] = useState(comments);
@@ -20,23 +23,24 @@ function CommentsList(props) {
 			like: 0,
 			timestamp: dayjs(),
 		};
+
 		const newVideoComments = [newComment, ...activeVideoComments];
 		setActiveVideoComments(newVideoComments);
 	};
 
 	return (
 		<div className="comments">
-			<p className="text text--name">{activeVideoComments.length} Comments</p>
+			<p className="text text--name">
+				{activeVideoComments.length} Comments
+			</p>
 			<div className="comments__form">
 				<img className="avatar" src={myAvatar} alt="avatar" />
 				<Form addComment={addComment} />
 			</div>
 			<div className="comments__list">
 				{activeVideoComments.map((comment, index) => {
-					const date = new Date(comment.timestamp).toLocaleDateString(
-						'en-US',
-						global.options
-					);
+					// const date = dayjs(comment.timestamp).fromNow();
+					const date = global.DynamicDate(comment.timestamp);
 
 					return (
 						<Comment

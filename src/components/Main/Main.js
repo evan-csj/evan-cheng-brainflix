@@ -26,7 +26,10 @@ function Main() {
 			<div className="text-control">
 				<div className="text-control__current-video">
 					<Info video={activeVideo} />
-					<Comments videoComments={activeVideo.comments} />
+					<Comments
+						key={activeVideo.id}
+						videoComments={activeVideo.comments}
+					/>
 				</div>
 				<div className="text-control__next-videos">
 					<NextVideo
