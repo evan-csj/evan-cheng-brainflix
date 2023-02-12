@@ -1,11 +1,72 @@
+// Color
+$bf-black: #323232;
+$bf-blue: #0095ff;
+$bf-silver: #afafaf;
+$bf-white: #ffffff;
+
+$bf-dark-black: #000000;
+$bf-dark-blue: #0065ad;
+$bf-mercury: #e1e1e1;
+$bf-alabaster: #fafafa;
+
+$bf-error: #d22d2d;
+
+// General
+$unit: 8px;
+$radius: 4px;
+
+// Window size
+$mobile-size: 320px;
+$tablet-size: 768px;
+$desktop-size: 1280px;
+
+// Layout Grid
+$margin-mobile: 16px;
+$gutter-mobile: 16px;
+$column-mobile: calc((100vw - $margin-mobile * 2 - $gutter-mobile * 5) / 6);
+$min-column-mobile: calc(
+	($mobile-size - $margin-mobile * 2 - $gutter-mobile * 5) / 6
+);
+
+$margin-tablet: 36px;
+$gutter-tablet: 24px;
+$column-tablet: calc((100vw - $margin-tablet * 2 - $gutter-tablet * 11) / 12);
+$min-column-tablet: calc(
+	($tablet-size - $margin-tablet * 2 - $gutter-tablet * 11) / 12
+);
+
+$gutter-desktop: 24px;
+$column-desktop: 63px;
+
+// Input
+$input-padding-mobile: 12px;
+$input-padding-tablet: 16px;
+
+// Avatar
+$avatar-mobile: 36px;
+$avatar-tablet: 40px;
+
+// Next Video Section
+$width-next-videos: $mobile-size - $margin-mobile;
+
+// Desktop content width
+$max-content-desktop: 609.44px;
+
+// Textarea
+$line-height-mobile: 18px;
+$line-height-tablet: 22px;
+
+// Font
 @font-face {
-    font-family: 'Avenir Next Bold';
-    src: url(../../assets/font/AvenirNextLTPro-Bold.otf) format('opentype'),
-         url(../../assets/font/AlternativeFiles/AvenirNextLTProBold.ttf) format('truetype');
+	font-family: 'Avenir Next Bold';
+	src: url(../../assets/font/AvenirNextLTPro-Bold.otf) format('opentype'),
+		url(../../assets/font/AlternativeFiles/AvenirNextLTProBold.ttf)
+			format('truetype');
 }
 
 @font-face {
-    font-family: 'Avenir Next Regular';
-    src: url(../../assets/font/AvenirNextLTPro-Regular.otf) format('opentype'),
-         url(../../assets/font/AlternativeFiles/AvenirNextLTPro.ttf) format('truetype');
+	font-family: 'Avenir Next Regular';
+	src: url(../../assets/font/AvenirNextLTPro-Regular.otf) format('opentype'),
+		url(../../assets/font/AlternativeFiles/AvenirNextLTPro.ttf)
+			format('truetype');
 }

@@ -1,0 +1,64 @@
+@import '../../../styles/partials/mixins';
+
+.info {
+	&__title {
+		@include divider("bottom");
+
+		@include tablet {
+			border: 0;
+		}
+
+		h1 {
+			@include header;
+			@include desktop {
+				padding-right: $gutter-desktop;
+			}
+		}
+	}
+
+	&__data {
+		@include divider("bottom");
+		@include flex-pattern(row);
+		gap: 0;
+		@include desktop {
+			padding-right: $gutter-desktop;
+		}
+		
+
+		& > div {
+			@include padding-TB;
+			@include flex-pattern;
+			@include flex-gap;
+			flex: 1;
+
+			@include tablet {
+				padding: 0;
+				flex: auto;
+				flex-direction: row;
+				justify-content: flex-start;
+			}
+
+			div {
+				@include flex-pattern(row, flex-start, center);
+				gap: $unit;
+
+				@include tablet {
+					padding-bottom: $unit;
+				}
+			}
+		}
+
+		div:nth-child(2) {
+			@include tablet {
+				justify-content: flex-end;
+			}
+		}
+	}
+
+	&__description {
+		@include padding-TB;
+		@include desktop {
+			padding-right: $gutter-desktop;
+		}
+	}
+}

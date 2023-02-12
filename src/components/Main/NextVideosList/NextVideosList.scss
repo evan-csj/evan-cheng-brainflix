@@ -1,0 +1,36 @@
+@import '../../../styles/partials/mixins';
+
+.text-control__next-videos {
+    @include divider("top");
+    @include flex-pattern($jc: flex-start);
+    gap: 0;
+    padding-bottom: $margin-mobile;
+
+    @include tablet {
+        padding-bottom: $margin-tablet
+    }
+
+    @include desktop {
+		padding-left: $gutter-desktop;
+        @include divider("left");
+	}
+
+    h2 {
+        @include padding-TB;
+        @include desktop {
+            @include header;
+        }
+    }
+
+    .next-videos-list {
+        @include flex-pattern;
+        @include flex-gap;
+        width: $mobile-size - $margin-mobile * 2;
+        @include tablet {
+            @include width-grid-fix(5.5);
+        }
+        @include desktop {
+            @include width-grid(3.7);
+        }
+    }
+}

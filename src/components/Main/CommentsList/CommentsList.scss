@@ -1,0 +1,34 @@
+@import '../../../styles/partials/mixins';
+
+.comments {
+	@include flex-pattern;
+	gap: 0;
+
+	& > p {
+		@include tablet {
+			padding-top: calc($gutter-tablet / 2);
+		}		
+		@include desktop {
+			padding-top: $gutter-desktop;
+		}
+	}
+
+	&__form {
+		@include flex-pattern(row);
+		@include padding-TB;
+		@include divider("bottom");
+		@include flex-gap;
+		@include tablet {
+			align-items: flex-start;
+		}
+		@include desktop {
+			padding-right: $gutter-desktop;
+		}
+
+		.avatar {
+			transform: translateY(20px);
+		}
+
+
+	}
+}

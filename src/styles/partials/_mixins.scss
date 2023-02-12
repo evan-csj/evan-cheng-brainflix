@@ -1,0 +1,123 @@
+@import './variables';
+
+@mixin tablet {
+	@media only screen and (min-width: $tablet-size) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media only screen and (min-width: $desktop-size) {
+		@content;
+	}
+}
+
+@mixin width-grid($n) {
+	width: 100%;
+
+	@include tablet {
+		width: calc($column-tablet * $n + $gutter-tablet * ($n - 1));
+	}
+
+	@include desktop {
+		width: calc($column-desktop * $n + $gutter-desktop * ($n - 1));
+	}
+}
+
+@mixin margin-LR($scale: 1) {
+	margin-left: $margin-mobile * $scale;
+	margin-right: $margin-mobile * $scale;
+	@include tablet {
+		margin-left: $margin-tablet * $scale;
+		margin-right: $margin-tablet * $scale;
+	}
+	@include desktop {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@mixin padding-TB {
+	padding: $gutter-mobile 0;
+	@include tablet {
+		padding: $gutter-tablet 0;
+	}
+}
+
+@mixin padding-LR($scale: 1) {
+	padding-left: $margin-mobile * $scale;
+	padding-right: $margin-mobile * $scale;
+
+	@include tablet {
+		padding-left: $margin-tablet * $scale;
+		padding-right: $margin-tablet * $scale;
+	}
+
+	@include desktop {
+		padding-left: auto;
+		padding-right: auto;
+	}
+}
+
+@mixin header {
+	padding: 24px 0 16px;
+
+	@include tablet {
+		padding: 36px 0 24px;
+	}
+}
+
+@mixin divider($p) {
+	border: 0;
+	@if $p == 'left' {
+		border-left: 1px solid $bf-mercury;
+	} @else if $p == 'top' {
+		border-top: 1px solid $bf-mercury;
+	} @else if $p == 'right' {
+		border-right: 1px solid $bf-mercury;
+	} @else if $p == 'bottom' {
+		border-bottom: 1px solid $bf-mercury;
+	} @else {
+		border: 0;
+	}
+}
+
+@mixin flex-pattern($dir: column, $jc: space-between, $ai: normal) {
+	display: flex;
+	flex-direction: $dir;
+	justify-content: $jc;
+	align-items: $ai;
+	flex-wrap: nowrap;
+}
+
+@mixin flex-gap {
+	gap: $gutter-mobile;
+
+	@include tablet {
+		gap: $gutter-tablet;
+	}
+}
+
+@mixin width-grid-fix($n) {
+	width: calc($min-column-mobile * $n + $gutter-mobile * ($n - 1));
+
+	@include tablet {
+		width: calc($min-column-tablet * $n + $gutter-tablet * ($n - 1));
+	}
+}
+
+@mixin max-width-content {
+	max-width: calc(
+		100vw - $margin-mobile * 2 - $gutter-mobile - $avatar-mobile
+	);
+
+	@include tablet {
+		max-width: calc(
+			100vw - $margin-tablet * 2 - $gutter-tablet - $avatar-tablet
+		);
+	}
+
+	@include desktop {
+		max-width: $max-content-desktop;
+	}
+}

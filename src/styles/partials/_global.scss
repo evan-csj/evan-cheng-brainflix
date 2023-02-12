@@ -1,8 +1,220 @@
-@use './variables';
+@import './variables';
+@import './mixins';
 
 * {
-    margin: 0;
-    font-family: 'Avenir Next Regular';
-    box-sizing: border-box;
-    outline: none;
+	margin: 0;
+	font-family: 'Avenir Next Bold';
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	outline: none;
+	list-style: none;
+	text-decoration: none;
+}
+
+body {
+	width: 100vw;
+	background-color: $bf-white;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+::placeholder {
+	color: $bf-dark-black;
+}
+
+%page-header {
+	font-size: 24px;
+	line-height: 32px;
+
+	@include tablet {
+		font-size: 33px;
+		line-height: 44px;
+	}
+}
+
+%section-header {
+	font-size: 12px;
+	line-height: 20px;
+}
+
+%subheader {
+	font-size: 13px;
+	line-height: $line-height-mobile;
+
+	@include tablet {
+		font-size: 14px;
+		line-height: $line-height-tablet;
+	}
+}
+
+%body-copy {
+	@extend %subheader;
+	font-family: 'Avenir Next Regular';
+}
+
+%label,
+%button {
+	font-size: 12px;
+	line-height: 20px;
+
+	@include tablet {
+		font-size: 10px;
+	}
+}
+
+h1 {
+	@extend %page-header;
+}
+
+h2 {
+	@extend %subheader;
+	color: $bf-silver;
+	text-transform: uppercase;
+}
+
+h3 {
+	@extend %section-header;
+}
+
+p {
+	@extend %body-copy;
+}
+
+label {
+	@extend %label;
+	text-transform: uppercase;
+	color: $bf-silver;
+}
+
+.text {
+	@extend %body-copy;
+	line-height: normal;
+
+	&--number {
+		font-family: 'Avenir Next Regular';
+		color: $bf-silver;
+	}
+
+	&--name {
+		color: $bf-dark-black;
+		font-family: 'Avenir Next Bold';
+	}
+}
+
+.icon {
+	&--data {
+		height: 10px;
+		transform: translateY(-2px);
+	}
+
+	&--button,
+	&--search {
+		position: absolute;
+		cursor: pointer;
+		left: $input-padding-mobile;
+	}
+
+	&--search {
+		height: 18px;
+		@include tablet {
+			height: 22px;
+		}
+	}
+
+	&--button {
+		height: 20px;
+	}
+}
+
+.button {
+	position: relative;
+	display: flex;
+	align-items: center;
+
+	button {
+		flex-grow: 1;
+		text-transform: uppercase;
+		background-color: $bf-blue;
+		border: 0;
+		color: $bf-white;
+		height: 40px;
+		min-width: 150px;
+		border-radius: $radius;
+
+		&:hover {
+			background-color: $bf-dark-blue;
+			cursor: pointer;
+		}
+
+		span {
+			display: inline-block;
+			@extend %button;
+			line-height: normal;
+		}
+	}
+}
+
+.avatar {
+	width: $avatar-mobile;
+	height: $avatar-mobile;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: 25% 50%;
+
+	@include tablet {
+		width: $avatar-tablet;
+		height: $avatar-tablet;
+	}
+}
+
+input,
+textarea {
+	@extend %body-copy;
+	background-color: $bf-alabaster;
+	border-radius: $radius;
+	resize: none;
+	max-width: 100%;
+	width: 100%;
+	box-shadow: inset 0 0 0 1px $bf-mercury;
+	padding: $input-padding-mobile;
+
+	@include tablet {
+		min-width: 240px;
+	}
+
+	&:focus {
+		box-shadow: inset 0 0 0 2px $bf-blue;
+	}
+
+	&.error {
+		box-shadow: inset 0 0 0 1px $bf-error;
+	}
+}
+
+input {
+	height: 36px;
+
+	@include tablet {
+		height: 40px;
+		padding: $input-padding-tablet;
+	}
+}
+
+textarea {
+	min-height: $line-height-mobile * 4 + $input-padding-mobile * 2;
+
+	@include tablet {
+		min-height: auto;
+		padding: $input-padding-tablet;
+
+		&.oneline {
+			height: 40px;
+			padding: calc((40px - $line-height-tablet) / 2)
+				$input-padding-tablet;
+		}
+	}
 }

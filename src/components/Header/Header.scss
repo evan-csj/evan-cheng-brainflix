@@ -1,0 +1,73 @@
+@import '../../styles/partials/mixins';
+
+header {
+	@include margin-LR;
+	@include padding-TB;
+	@include flex-pattern;
+	@include flex-gap;
+	@include desktop {
+		@include width-grid(12);
+	}
+
+	.logo {
+		margin: 0 auto;
+		max-width: 120px;
+		max-height: 25px;
+
+		@include tablet {
+			margin: 0;
+		}
+	}
+
+	.user {
+		@include flex-pattern;
+		@include flex-gap;
+
+		@include tablet {
+			flex-direction: row;
+		}
+
+		.search-box {
+			position: relative;
+			@include flex-pattern($dir: row, $ai: center);
+			@include flex-gap;
+
+			input {
+				flex-grow: 1;
+				padding-left: $input-padding-mobile + 18px + $unit;
+				@include tablet {
+					padding-left: $input-padding-tablet + 18px + $unit;
+				}
+			}
+
+			.avatar {
+				display: block;
+
+				@include tablet {
+					display: none;
+				}
+			}
+		}
+
+		div.avatar {
+			display: none;
+			position: relative;
+			@include tablet {
+				display: block;
+			}
+			@include desktop {
+				width: $column-desktop;
+			}
+
+			img.avatar {
+				position: absolute;
+				right: 0;
+			}
+		}
+	}
+
+	@include tablet {
+		flex-direction: row;
+		align-items: center;
+	}
+}

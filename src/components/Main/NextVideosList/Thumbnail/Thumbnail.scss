@@ -1,0 +1,22 @@
+@import '../../../../styles/partials/mixins';
+
+.thumbnail {
+	@include flex-pattern(row, flex-start);
+	gap: $gutter-mobile;
+	cursor: pointer;
+
+	img {
+		@include width-grid-fix(2.5);
+		aspect-ratio: 16 / 9;
+		border-radius: $radius;
+		background-color: $bf-mercury;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	div {
+		flex: 1 0;
+		@include flex-pattern;
+		gap: normal;
+	}
+}

@@ -1,0 +1,14 @@
+@import '../../styles/partials/mixins';
+
+main {
+	.text-control {
+		@include margin-LR;
+		@include flex-pattern;
+		gap: 0;
+
+		@include desktop {
+			flex-direction: row;
+			@include width-grid(12);
+		}
+	}
+}

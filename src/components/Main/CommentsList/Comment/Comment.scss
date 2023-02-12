@@ -1,0 +1,34 @@
+@import '../../../../styles/partials/mixins';
+
+article {
+	@include padding-TB;
+	@include flex-pattern(row, flex-start);
+	@include flex-gap;
+	@include desktop {
+		padding-right: $gutter-desktop;
+	}
+
+	div.avatar {
+		flex-shrink: 0;
+		background-color: $bf-silver;
+	}
+
+	.comment {
+		flex: 1;
+		@include flex-pattern;
+		@include max-width-content;
+		gap: $unit;
+		overflow-wrap: break-word;
+
+		&__attribute {
+			@include flex-pattern(row);
+			.text--number {
+				text-align: right;
+			}
+		}
+	}
+}
+
+article.comment--not-last {
+	@include divider('bottom');
+}
