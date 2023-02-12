@@ -6,4 +6,5 @@ const WindowDimensions = () => {
 	};
 };
 
+
 export default WindowDimensions;
