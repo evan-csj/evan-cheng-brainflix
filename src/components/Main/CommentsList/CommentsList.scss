@@ -19,7 +19,7 @@
 		@include divider("bottom");
 		@include flex-gap;
 		@include tablet {
-			align-items: flex-end;
+			align-items: flex-start;
 		}
 		@include desktop {
 			padding-right: $gutter-desktop;
@@ -27,9 +27,6 @@
 
 		.avatar {
 			transform: translateY(20px);
-			@include tablet {
-				transform: none;
-			}
 		}
 
 

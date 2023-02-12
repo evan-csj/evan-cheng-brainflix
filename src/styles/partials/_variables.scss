@@ -52,6 +52,10 @@ $width-next-videos: $mobile-size - $margin-mobile;
 // Desktop content width
 $max-content-desktop: 609.44px;
 
+// Textarea
+$line-height-mobile: 18px;
+$line-height-tablet: 22px;
+
 // Font
 @font-face {
 	font-family: 'Avenir Next Bold';

@@ -12,9 +12,12 @@ form {
 
     @include tablet {
         flex-direction: row;
-        align-items: flex-end;
+        align-items: flex-start;
         .text-input {
             flex: 1;
+        }
+        button {
+            transform: translateY(20px);
         }
     }
 }
