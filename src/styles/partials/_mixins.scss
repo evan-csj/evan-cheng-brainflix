@@ -105,3 +105,19 @@
 		width: calc($min-column-tablet * $n + $gutter-tablet * ($n - 1));
 	}
 }
+
+@mixin max-width-content {
+	max-width: calc(
+		100vw - $margin-mobile * 2 - $gutter-mobile - $avatar-mobile
+	);
+
+	@include tablet {
+		max-width: calc(
+			100vw - $margin-tablet * 2 - $gutter-tablet - $avatar-tablet
+		);
+	}
+
+	@include desktop {
+		max-width: $max-content-desktop;
+	}
+}

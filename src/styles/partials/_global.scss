@@ -14,6 +14,7 @@
 }
 
 body {
+	width: 100vw;
 	background-color: $bf-white;
 }
 
@@ -203,7 +204,7 @@ input {
 }
 
 textarea {
-	padding: $input-padding-mobile 0 0 $input-padding-mobile;
+	padding: $input-padding-mobile $input-padding-mobile 0;
 	@include tablet {
 		padding-top: $unit;
 	}

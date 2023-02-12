@@ -16,7 +16,9 @@ article {
 	.comment {
 		flex: 1;
 		@include flex-pattern;
+		@include max-width-content;
 		gap: $unit;
+		overflow-wrap: break-word;
 
 		&__attribute {
 			@include flex-pattern(row);

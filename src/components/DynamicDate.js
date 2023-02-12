@@ -42,7 +42,7 @@ dayjs.updateLocale('en', {
 	},
 });
 
-export const DynamicDate = timestamp => {
+const DynamicDate = timestamp => {
 	const time = dayjs(timestamp);
 	if (dayjs().diff(time, 'month', true) <= 12) {
 		return time.fromNow();
@@ -50,3 +50,5 @@ export const DynamicDate = timestamp => {
 		return time.format('MM/DD/YYYY');
 	}
 };
+
+export default DynamicDate;

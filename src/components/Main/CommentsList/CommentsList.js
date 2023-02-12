@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import dayjs from 'dayjs';
-import * as global from '../../global';
+import DynamicDate from '../../DynamicDate';
 import Comment from './Comment/Comment';
 import Form from './CommentForm/CommentForm';
 import myAvatar from '../../../assets/images/Mohan-muruge.jpg';
@@ -10,7 +10,7 @@ import './CommentsList.scss';
 function CommentsList(props) {
 	const relativeTime = require('dayjs/plugin/relativeTime');
 	dayjs.extend(relativeTime);
-	
+
 	const comments = props.videoComments;
 	const userName = 'First-Name Last-Name';
 	const [activeVideoComments, setActiveVideoComments] = useState(comments);
@@ -39,7 +39,7 @@ function CommentsList(props) {
 			</div>
 			<div className="comments__list">
 				{activeVideoComments.map((comment, index) => {
-					const date = global.DynamicDate(comment.timestamp);
+					const date = DynamicDate(comment.timestamp);
 
 					return (
 						<Comment
