@@ -10,31 +10,38 @@ import thumbnailList from '../../data/videos.json';
 import './Main.scss';
 
 function Main() {
-	const defaultVideo = videoDetailList[0];
+	const defaultVideo = {
+		mainVideo: videoDetailList[0],
+		sideVideo: thumbnailList,
+	};
+
 	const [activeVideo, setActiveVideo] = useState(defaultVideo);
 
 	const changeActiveVideo = id => {
 		const nextVideo = videoDetailList.filter(
 			videoDetail => videoDetail.id === id
 		);
-		setActiveVideo(nextVideo[0]);
+		setActiveVideo({
+			mainVideo: nextVideo[0],
+			sideVideo: thumbnailList,
+		});
 	};
 
 	return (
 		<main>
-			<Video video={activeVideo} />
+			<Video video={activeVideo.mainVideo} />
 			<div className="text-control">
 				<div className="text-control__current-video">
-					<Info video={activeVideo} />
+					<Info video={activeVideo.mainVideo} />
 					<Comments
-						key={activeVideo.id}
-						videoComments={activeVideo.comments}
+						key={activeVideo.mainVideo.id}
+						videoComments={activeVideo.mainVideo.comments}
 					/>
 				</div>
 				<div className="text-control__next-videos">
 					<NextVideo
-						videos={thumbnailList}
-						thisVideoId={activeVideo.id}
+						videos={activeVideo.sideVideo}
+						thisVideoId={activeVideo.mainVideo.id}
 						changeActiveVideo={changeActiveVideo}
 					/>
 				</div>
