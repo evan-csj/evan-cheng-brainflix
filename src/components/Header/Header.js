@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/logo/BrainFlix-logo.svg';
 import search from '../../assets/icons/search.svg';
 import upload from '../../assets/icons/upload.svg';
@@ -9,7 +10,10 @@ import './Header.scss';
 function Header() {
 	return (
 		<header>
-			<img className="logo" src={logo} alt="Logo" />
+			<Link to="/">
+				<img className="logo" src={logo} alt="Logo" />
+			</Link>
+
 			<div className="user">
 				<div className="search-box">
 					<input

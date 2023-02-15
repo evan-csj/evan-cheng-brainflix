@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Video from './Video/Video';
 import Info from './Info/Info';
 import Comments from './CommentsList/CommentsList';
@@ -7,25 +8,36 @@ import NextVideo from './NextVideosList/NextVideosList';
 import videoDetailList from '../../data/video-details.json';
 import thumbnailList from '../../data/videos.json';
 
-import './Main.scss';
+import './VideoPlayer.scss';
 
-function Main() {
-	const defaultVideo = {
-		mainVideo: videoDetailList[0],
+function VideoPlayer() {
+	const { videoId } = useParams();
+
+	let videoDetail;
+	if (videoId === undefined) {
+		videoDetail = videoDetailList[0];
+	} else {
+		videoDetail = videoDetailList.filter(
+			videoDetail => videoDetail.id === videoId
+		)[0];
+	}
+
+	const activeVideo = {
+		mainVideo: videoDetail,
 		sideVideo: thumbnailList,
 	};
 
-	const [activeVideo, setActiveVideo] = useState(defaultVideo);
+	// const [activeVideo, setActiveVideo] = useState(defaultVideo);
 
-	const changeActiveVideo = id => {
-		const nextVideo = videoDetailList.filter(
-			videoDetail => videoDetail.id === id
-		);
-		setActiveVideo({
-			mainVideo: nextVideo[0],
-			sideVideo: thumbnailList,
-		});
-	};
+	// const changeActiveVideo = (id) => {
+	// 	const nextVideo = videoDetailList.filter(
+	// 		videoDetail => videoDetail.id === id
+	// 	);
+	// 	setActiveVideo({
+	// 		mainVideo: nextVideo[0],
+	// 		sideVideo: thumbnailList,
+	// 	});
+	// };
 
 	return (
 		<main>
@@ -42,7 +54,7 @@ function Main() {
 					<NextVideo
 						videos={activeVideo.sideVideo}
 						thisVideoId={activeVideo.mainVideo.id}
-						changeActiveVideo={changeActiveVideo}
+						// changeActiveVideo={changeActiveVideo}
 					/>
 				</div>
 			</div>
@@ -50,4 +62,4 @@ function Main() {
 	);
 }
 
-export default Main;
+export default VideoPlayer;
