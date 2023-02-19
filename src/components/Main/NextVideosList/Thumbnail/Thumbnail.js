@@ -7,7 +7,6 @@ function Thumbnail(props) {
 		<Link to={`/video/${props.id}`}>
 			<div
 				className="thumbnail"
-				// onClick={() => props.changeActiveVideo(props.id)}
 			>
 				<img src={props.image} alt={props.title} />
 				<div>
