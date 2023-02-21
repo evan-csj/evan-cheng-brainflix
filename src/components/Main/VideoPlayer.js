@@ -80,6 +80,7 @@ function VideoPlayer() {
 						<Info video={activeVideo.mainVideo} />
 						<Comments
 							key={activeVideo.mainVideo.id}
+							id={activeVideo.mainVideo.id}
 							videoComments={activeVideo.mainVideo.comments}
 						/>
 					</div>
