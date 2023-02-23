@@ -1,0 +1,14 @@
+@import '../../styles/partials/mixins';
+
+section {
+	@include padding-LR;
+	@include divider('top');
+	h1 {
+		@include header;
+	}
+	img {
+		display: block;
+		border-radius: $radius;
+		width: 100%;
+	}
+}
