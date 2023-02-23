@@ -1,37 +1,16 @@
+// Library
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { GetVideoList, GetVideoDetail } from '../API';
+
+// Component
 import Video from './Video/Video';
 import Info from './Info/Info';
 import Comments from './CommentsList/CommentsList';
 import NextVideo from './NextVideosList/NextVideosList';
 
+// scss
 import './VideoPlayer.scss';
-
-const apiAddress = 'https://project-2-api.herokuapp.com';
-const apiKey = '611d31a1-7bdd-4769-8e5f-de260b873bb4';
-
-const GetVideoList = async () => {
-	try {
-		const videoList = await axios.get(
-			`${apiAddress}/videos?api_key=${apiKey}`
-		);
-		return videoList;
-	} catch (e) {
-		console.error('error');
-	}
-};
-
-const GetVideoDetail = async activeVideoId => {
-	try {
-		const videoDetail = await axios.get(
-			`${apiAddress}/videos/${activeVideoId}?api_key=${apiKey}`
-		);
-		return videoDetail;
-	} catch (e) {
-		console.error('error');
-	}
-};
 
 function VideoPlayer() {
 	const { videoId } = useParams();
