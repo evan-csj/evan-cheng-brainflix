@@ -28,7 +28,7 @@ function Form(props) {
 			<div className="text-input">
 				<label htmlFor="content">Join the conversation</label>
 				<textarea
-					className={textAreaRows > 1? "" : "oneline"}
+					className={textAreaRows > 1 ? '' : 'oneline'}
 					type="textarea"
 					name="content"
 					id="content"
@@ -38,16 +38,14 @@ function Form(props) {
 					onChange={handleChange}
 				/>
 			</div>
-			<div className="button">
-				<button type="submit">
-					<span>Comment</span>
-					<img
-						className="icon--button"
-						src={addCommentIcon}
-						alt="add comment"
-					/>
-				</button>
-			</div>
+			<button type="submit">
+				<span>Comment</span>
+				<img
+					className="icon--button"
+					src={addCommentIcon}
+					alt="add comment"
+				/>
+			</button>
 		</form>
 	);
 }

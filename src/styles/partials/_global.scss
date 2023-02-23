@@ -131,31 +131,28 @@ label {
 	}
 }
 
-.button {
+button {
 	position: relative;
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	background-color: $bf-blue;
+	border: 0;
+	height: 40px;
+	min-width: 150px;
+	border-radius: $radius;
 
-	button {
-		flex-grow: 1;
-		text-transform: uppercase;
-		background-color: $bf-blue;
-		border: 0;
-		height: 40px;
-		min-width: 150px;
-		border-radius: $radius;
+	&:hover {
+		background-color: $bf-dark-blue;
+		cursor: pointer;
+	}
 
-		&:hover {
-			background-color: $bf-dark-blue;
-			cursor: pointer;
-		}
-
-		span {
-			display: inline-block;
-			@extend %button;
-			line-height: normal;
-			color: $bf-white;
-		}
+	span {
+		display: inline-block;
+		@extend %button;
+		line-height: normal;
+		color: $bf-white;
 	}
 }
 
