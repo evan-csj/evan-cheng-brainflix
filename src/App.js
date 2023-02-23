@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
-import VideoPlayer from './components/Main/VideoPlayer';
+import VideoPlayer from './components/Home/VideoPlayer';
 import './App.scss';
 
 function App() {
