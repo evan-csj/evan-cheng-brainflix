@@ -132,7 +132,7 @@ label {
 	}
 }
 
-button {
+.button {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -155,6 +155,22 @@ button {
 		line-height: normal;
 		color: $bf-white;
 	}
+
+	&--reverse {
+		@extend .button;
+		background-color: $bf-white;
+		&:hover {
+			background-color: $bf-white;
+			cursor: auto;
+		}
+		span {
+			color: $bf-blue;
+			&:hover {
+				color: $bf-dark-blue;
+				cursor: pointer;
+			}
+		}
+	}
 }
 
 .avatar {
@@ -168,6 +184,12 @@ button {
 		width: $avatar-tablet;
 		height: $avatar-tablet;
 	}
+}
+
+.form-input__unit {
+	@include flex-pattern;
+	gap: 0;
+	flex: 1;
 }
 
 input,
@@ -216,4 +238,8 @@ textarea {
 				$input-padding-tablet;
 		}
 	}
+}
+
+.divider {
+	@include divider('top');
 }

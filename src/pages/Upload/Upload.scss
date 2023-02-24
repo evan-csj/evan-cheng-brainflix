@@ -1,14 +1,71 @@
 @import '../../styles/partials/mixins';
 
 section {
-	@include padding-LR;
-	@include divider('top');
+	@include margin-LR;
+	@include desktop {
+		@include width-grid(12);
+	}
+
 	h1 {
 		@include header;
 	}
+
 	img {
 		display: block;
 		border-radius: $radius;
 		width: 100%;
+	}
+
+	form {
+		.form-input {
+			@include flex-pattern;
+			@include flex-gap;
+			padding-bottom: $gutter-mobile;
+
+			&--text {
+				@include flex-pattern;
+				@include flex-gap;
+			}
+
+			@include tablet {
+				@include padding-TB;
+				@include divider('top');
+
+				&--video {
+					width: 50%;
+				}
+			}
+
+			@include desktop {
+				flex-direction: row;
+
+				div {
+					justify-content: flex-start;
+					width: auto;
+				}
+
+				&--video {
+					flex: 1;
+				}
+				&--text {
+					flex: 2;
+				}
+			}
+		}
+
+		.form-button {
+			flex: 1;
+			@include flex-pattern;
+			@include padding-TB;
+			@include flex-gap;
+			@include tablet {
+				@include divider('top');
+				flex-direction: row;
+				justify-content: flex-end;
+				.button {
+					order: 1;
+				}
+			}
+		}
 	}
 }

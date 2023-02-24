@@ -37,10 +37,13 @@
 	}
 }
 
-@mixin padding-TB {
-	padding: $gutter-mobile 0;
+@mixin padding-TB($scale: 1) {
+	padding-top: $gutter-mobile * $scale;
+	padding-bottom: $gutter-mobile * $scale;
+
 	@include tablet {
-		padding: $gutter-tablet 0;
+		padding-top: $gutter-tablet * $scale;
+		padding-bottom: $gutter-tablet * $scale;
 	}
 }
 
@@ -90,11 +93,11 @@
 	flex-wrap: nowrap;
 }
 
-@mixin flex-gap {
-	gap: $gutter-mobile;
+@mixin flex-gap($scale: 1) {
+	gap: $gutter-mobile * $scale;
 
 	@include tablet {
-		gap: $gutter-tablet;
+		gap: $gutter-tablet * $scale;
 	}
 }
 

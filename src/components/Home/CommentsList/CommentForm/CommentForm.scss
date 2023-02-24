@@ -1,23 +1,18 @@
 @import '../../../../styles/partials/mixins';
 
-form {
-    @include flex-pattern;
-    @include flex-gap;
-    flex: 1;
+.comments__form {
+	form {
+		@include flex-pattern;
+		@include flex-gap;
+		flex: 1;
 
-    .text-input {
-        @include flex-pattern;
-        gap: 0;
-    }
+		@include tablet {
+			flex-direction: row;
+			align-items: flex-start;
 
-    @include tablet {
-        flex-direction: row;
-        align-items: flex-start;
-        .text-input {
-            flex: 1;
-        }
-        button {
-            transform: translateY(20px);
-        }
-    }
+			button {
+				transform: translateY(20px);
+			}
+		}
+	}
 }

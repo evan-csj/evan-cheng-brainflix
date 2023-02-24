@@ -25,7 +25,7 @@ function Form(props) {
 
 	return (
 		<form onSubmit={submitHandler}>
-			<div className="text-input">
+			<div className="form-input__unit">
 				<label htmlFor="content">Join the conversation</label>
 				<textarea
 					className={textAreaRows > 1 ? '' : 'oneline'}
@@ -38,7 +38,7 @@ function Form(props) {
 					onChange={handleChange}
 				/>
 			</div>
-			<button type="submit">
+			<button className='button' type="submit">
 				<span>Comment</span>
 				<img
 					className="icon--button"

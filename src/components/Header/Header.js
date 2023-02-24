@@ -29,7 +29,7 @@ function Header() {
 					<img className="icon--search" src={search} alt="search" />
 					<img className="avatar" src={avatar} alt="avatar" />
 				</div>
-				<button className="button" onClick={handleClick}>
+				<button className="button" type="button" onClick={handleClick}>
 					<span>Upload</span>
 					<img className="icon--button" src={upload} alt="upload" />
 				</button>
