@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
 import logo from '../../assets/logo/BrainFlix-logo.svg';
 import search from '../../assets/icons/search.svg';
 import upload from '../../assets/icons/upload.svg';
@@ -15,7 +16,7 @@ function Header() {
 
 	return (
 		<header>
-			<Link className="logo" to="/">
+			<Link className="logo" to="/home">
 				<img src={logo} alt="Logo" />
 			</Link>
 

@@ -26,6 +26,12 @@ article {
 				text-align: right;
 			}
 		}
+
+		&__action {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end
+		}
 	}
 }
 

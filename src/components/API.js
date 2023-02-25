@@ -31,16 +31,28 @@ const GetVideoDetail = async activeVideoId => {
 	}
 };
 
-const PostNewComment = (newComment, videoId) => {
+const PostNewComment = (videoId, newComment) => {
 	try {
-		axios.post(
+		const comment = axios.post(
 			`${apiAddress}/videos/${videoId}/comments?api_key=${apiKey}`,
 			newComment,
 			newCommentHeader
 		);
+		return comment;
 	} catch (e) {
 		console.error('error');
 	}
 };
 
-export { GetVideoList, GetVideoDetail, PostNewComment };
+const DeleteComment = (videoId, commentId) => {
+	try {
+		const comment = axios.delete(
+			`${apiAddress}/videos/${videoId}/comments/${commentId}?api_key=${apiKey}`
+		);
+		return comment;
+	} catch (e) {
+		console.error('error');
+	}
+};
+
+export { GetVideoList, GetVideoDetail, PostNewComment, DeleteComment };

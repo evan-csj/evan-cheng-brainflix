@@ -2,11 +2,26 @@ import React from 'react';
 
 import './Comment.scss';
 
+import del from '../../../../assets/icons/delete.svg';
+
 function Comment(props) {
 	const avatar = props.avatar ? (
 		<img className="avatar" src={props.avatar} alt="avatar" />
 	) : (
 		<div className="avatar"></div>
+	);
+
+	const commentAction = props.avatar ? (
+		<div className="comment__action">
+			<img
+				className="icon--action"
+				src={del}
+				alt="delete icon"
+				onClick={() => props.deleteComment(props.id)}
+			/>
+		</div>
+	) : (
+		<></>
 	);
 
 	let commentClass = '';
@@ -23,7 +38,7 @@ function Comment(props) {
 					<span className="text text--number">{props.date}</span>
 				</div>
 				<p className="comment__text">{props.text}</p>
-				{/* <div className="comment__action"></div> */}
+				{commentAction}
 			</div>
 		</article>
 	);

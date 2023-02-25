@@ -1,7 +1,7 @@
 // Library
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { PostNewComment } from '../../API';
+import { PostNewComment, DeleteComment } from '../../API';
 import DynamicDate from '../../DynamicDate';
 
 // Component
@@ -26,8 +26,18 @@ function CommentsList(props) {
 			comment: content,
 		};
 
-		PostNewComment(newComment, props.id);
-		const newVideoComments = [newComment, ...activeVideoComments];
+		PostNewComment(props.id, newComment).then(response => {
+			const newVideoComments = [response.data, ...activeVideoComments];
+			setActiveVideoComments(newVideoComments);
+		});
+
+	};
+
+	const deleteComment = commentId => {
+		DeleteComment(props.id, commentId);
+		const newVideoComments = activeVideoComments.filter(
+			element => element.id !== commentId
+		);
 		setActiveVideoComments(newVideoComments);
 	};
 
@@ -61,6 +71,7 @@ function CommentsList(props) {
 								date={date}
 								text={comment.comment}
 								like={comment.likes}
+								deleteComment={deleteComment}
 							/>
 						);
 					})}
