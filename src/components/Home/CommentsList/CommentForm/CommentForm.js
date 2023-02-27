@@ -38,7 +38,7 @@ function Form(props) {
 					onChange={handleChange}
 				/>
 			</div>
-			<button className='button' type="submit">
+			<button className="button" type="submit">
 				<span>Comment</span>
 				<img
 					className="icon--button"

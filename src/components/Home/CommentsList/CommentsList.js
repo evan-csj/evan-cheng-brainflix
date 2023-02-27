@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import { PostNewComment, DeleteComment } from '../../API';
 import DynamicDate from '../../DynamicDate';
+import Toast, { Error, Success, Warn } from '../Toast/Toast';
 
 // Component
 import Comment from './Comment/Comment';
@@ -11,6 +12,10 @@ import myAvatar from '../../../assets/images/Mohan-muruge.jpg';
 
 // scss
 import './CommentsList.scss';
+
+const errorMsg = 'Fail to leave a comment!';
+const successMsg = 'Succeed to leave a comment!';
+const deleteMsg = 'Succeed to delete a comment!';
 
 function CommentsList(props) {
 	const relativeTime = require('dayjs/plugin/relativeTime');
@@ -33,10 +38,11 @@ function CommentsList(props) {
 					...activeVideoComments,
 				];
 				setActiveVideoComments(newVideoComments);
+				Success(successMsg);
 			})
 			.catch(error => {
-				console.error('Fail to leave a comment!');
-				window.alert('Fail to leave a comment!');
+				console.error(errorMsg);
+				Error(errorMsg);
 			});
 	};
 
@@ -46,6 +52,7 @@ function CommentsList(props) {
 			element => element.id !== commentId
 		);
 		setActiveVideoComments(newVideoComments);
+		Warn(deleteMsg);
 	};
 
 	return (
@@ -83,6 +90,7 @@ function CommentsList(props) {
 						);
 					})}
 			</div>
+			<Toast />
 		</div>
 	);
 }

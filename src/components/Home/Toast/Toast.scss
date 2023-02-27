@@ -1,0 +1,11 @@
+@import '../../../styles/partials/mixins';
+
+:root {
+	--toastify-color-error: #d22d2d;
+}
+
+.Toastify__toast-theme--colored {
+	* {
+		color: $bf-white;
+	}
+}
