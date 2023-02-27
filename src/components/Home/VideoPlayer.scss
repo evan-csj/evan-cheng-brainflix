@@ -9,6 +9,10 @@ main {
 		@include desktop {
 			flex-direction: row;
 			@include width-grid(12);
+
+			&__current-video {
+				flex: 1;
+			}
 		}
 	}
 }

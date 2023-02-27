@@ -18,6 +18,7 @@ function App() {
 					<Route path="/home" element={<VideoPlayer />} />
 					<Route path="/video/:videoId" element={<VideoPlayer />} />
 					<Route path="/upload" element={<Upload />} />
+					<Route path='/*' element={<VideoPlayer />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

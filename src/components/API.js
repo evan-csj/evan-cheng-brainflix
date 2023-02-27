@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const apiAddress = 'https://project-2-api.herokuapp.com';
-const apiKey = '611d31a1-7bdd-4769-8e5f-de260b873bb4';
+const API_ADDRESS = 'https://project-2-api.herokuapp.com';
+const API_KEY = '611d31a1-7bdd-4769-8e5f-de260b873bb4';
 
 const newCommentHeader = {
 	headers: {
@@ -12,46 +12,47 @@ const newCommentHeader = {
 const GetVideoList = async () => {
 	try {
 		const videoList = await axios.get(
-			`${apiAddress}/videos?api_key=${apiKey}`
+			`${API_ADDRESS}/videos?api_key=${API_KEY}`
 		);
 		return videoList;
-	} catch (e) {
-		console.error('error');
+	} catch (error) {
+		console.error(error.response.data.message);
 	}
 };
 
 const GetVideoDetail = async activeVideoId => {
 	try {
 		const videoDetail = await axios.get(
-			`${apiAddress}/videos/${activeVideoId}?api_key=${apiKey}`
+			`${API_ADDRESS}/videos/${activeVideoId}?api_key=${API_KEY}`
 		);
 		return videoDetail;
-	} catch (e) {
-		console.error('error');
+	} catch (error) {
+		console.error(error.response.data.message);
+		return error.response;
 	}
 };
 
 const PostNewComment = (videoId, newComment) => {
 	try {
 		const comment = axios.post(
-			`${apiAddress}/videos/${videoId}/comments?api_key=${apiKey}`,
+			`${API_ADDRESS}/videos/${videoId}/comments?api_key=${API_KEY}`,
 			newComment,
 			newCommentHeader
 		);
 		return comment;
-	} catch (e) {
-		console.error('error');
+	} catch (error) {
+		console.error(error.response);
 	}
 };
 
 const DeleteComment = (videoId, commentId) => {
 	try {
 		const comment = axios.delete(
-			`${apiAddress}/videos/${videoId}/comments/${commentId}?api_key=${apiKey}`
+			`${API_ADDRESS}/videos/${videoId}/comments/${commentId}?api_key=${API_KEY}`
 		);
 		return comment;
-	} catch (e) {
-		console.error('error');
+	} catch (error) {
+		console.error(error.response);
 	}
 };
 

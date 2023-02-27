@@ -33,7 +33,20 @@ function VideoPlayer() {
 			}
 		} else {
 			GetVideoDetail(videoId).then(response => {
-				setMainVideo(response.data);
+				if (response.data.id !== undefined) {
+					setMainVideo(response.data);
+				} else {
+					const errorVideo = {
+						title: response.data.message,
+						channel: 'No Channel',
+						description: '',
+						views: 0,
+						likes: 0,
+						timestamp: '',
+						comments: [],
+					};
+					setMainVideo(errorVideo);
+				}
 			});
 			if (sideVideo === null) {
 				GetVideoList().then(response => {

@@ -26,11 +26,18 @@ function CommentsList(props) {
 			comment: content,
 		};
 
-		PostNewComment(props.id, newComment).then(response => {
-			const newVideoComments = [response.data, ...activeVideoComments];
-			setActiveVideoComments(newVideoComments);
-		});
-
+		PostNewComment(props.id, newComment)
+			.then(response => {
+				const newVideoComments = [
+					response.data,
+					...activeVideoComments,
+				];
+				setActiveVideoComments(newVideoComments);
+			})
+			.catch(error => {
+				console.error('Fail to leave a comment!');
+				window.alert('Fail to leave a comment!');
+			});
 	};
 
 	const deleteComment = commentId => {
