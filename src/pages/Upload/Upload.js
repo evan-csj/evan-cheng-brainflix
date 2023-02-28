@@ -6,7 +6,7 @@ import preview from '../../assets/images/Upload-video-preview.jpg';
 import publish from '../../assets/icons/publish.svg';
 import './Upload.scss';
 
-function Upload() {
+function Upload(props) {
 	const [textAreaRows, setTextAreaRows] = useState(3);
 	const { width } = WindowDimensions();
 	const navigate = useNavigate();
@@ -21,6 +21,7 @@ function Upload() {
 						SubmitHandler(event, undefined);
 						setTextAreaRows(3);
 						navigate('/home');
+						props.upload();
 					}}
 				>
 					<div className="form-input">
@@ -70,7 +71,7 @@ function Upload() {
 								alt="publish"
 							/>
 						</button>
-						<button type="button" className="button--reverse" onClick={() => navigate('/home')}>
+						<button type="button" className="button--reverse" onClick={() => {navigate('/home'); props.cancel()}}>
 							<span>Cancel</span>
 						</button>
 					</div>
