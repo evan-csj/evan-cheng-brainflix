@@ -9,6 +9,7 @@ function App() {
 	useEffect(() => {
 		document.title = 'BrainFlix';
 	}, []);
+
 	return (
 		<div className="App">
 			<BrowserRouter>

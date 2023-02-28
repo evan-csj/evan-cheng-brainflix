@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import { PostNewComment, DeleteComment } from '../../API';
 import DynamicDate from '../../DynamicDate';
-import Toast, { Error, Success, Warn } from '../Toast/Toast';
+import Toast, { Error, Success, Warn } from '../../Toast/Toast';
 
 // Component
 import Comment from './Comment/Comment';

@@ -26,6 +26,11 @@ body {
 	color: $bf-dark-black;
 }
 
+::selection {
+	background: $bf-blue;
+	color: $bf-white;
+}
+
 %page-header {
 	font-size: 24px;
 	line-height: 32px;
@@ -233,18 +238,25 @@ input {
 	}
 }
 
-textarea {
-	min-height: $line-height-mobile * 4 + $input-padding-mobile * 2;
+.text-area {
+	&--comment {
+		@include tablet {
+			padding: $input-padding-tablet;
+		}
+	}
 
-	@include tablet {
-		min-height: auto;
-		padding: $input-padding-tablet;
-
-		&.oneline {
+	&--oneline {
+		min-height: $line-height-mobile * 4 + $input-padding-mobile * 2;
+		@include tablet {
+			min-height: auto;
 			height: 40px;
 			padding: calc((40px - $line-height-tablet) / 2)
 				$input-padding-tablet;
 		}
+	}
+
+	&--upload {
+		min-height: $line-height-mobile * 3 + $input-padding-mobile * 2;
 	}
 }
 

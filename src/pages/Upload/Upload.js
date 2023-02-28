@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { SubmitHandler, HandleChange } from '../../components/FormChange';
+import { useNavigate } from 'react-router-dom';
+import WindowDimensions from '../../components/WindowDimension';
 import preview from '../../assets/images/Upload-video-preview.jpg';
 import publish from '../../assets/icons/publish.svg';
 import './Upload.scss';
 
 function Upload() {
+	const [textAreaRows, setTextAreaRows] = useState(3);
+	const { width } = WindowDimensions();
+	const navigate = useNavigate();
+
 	return (
 		<>
 			<div className="divider"></div>
 			<section>
 				<h1>Upload Video</h1>
-				<form>
+				<form
+					onSubmit={event => {
+						SubmitHandler(event, undefined);
+						setTextAreaRows(3);
+						navigate('/home');
+					}}
+				>
 					<div className="form-input">
 						<div className="form-input--video form-input__unit">
 							<label>Video Thumbnail</label>
@@ -33,12 +46,17 @@ function Upload() {
 									Add a Video Description
 								</label>
 								<textarea
+									className="text-area--upload"
 									type="textarea"
 									name="video-description"
-									rows="3"
+									rows={textAreaRows}
 									placeholder="Add a new comment"
 									required
-									// onChange={handleChange}
+									onChange={event => {
+										setTextAreaRows(
+											HandleChange(event, width)
+										);
+									}}
 								/>
 							</div>
 						</div>
@@ -52,7 +70,7 @@ function Upload() {
 								alt="publish"
 							/>
 						</button>
-						<button type="button" className="button--reverse">
+						<button type="button" className="button--reverse" onClick={() => navigate('/home')}>
 							<span>Cancel</span>
 						</button>
 					</div>
