@@ -1,11 +1,39 @@
 @import '../../../styles/partials/mixins';
 
+$rt-mobile: 'only screen and (max-width : 768px)';
+
 :root {
 	--toastify-color-error: #d22d2d;
 }
 
-.Toastify__toast-theme--colored {
-	* {
-		color: $bf-white;
+.Toastify__toast {
+	margin-bottom: 0;
+	border-radius: 0;
+
+	@include tablet {
+		margin-bottom: 1rem;
+		border-radius: $radius;
+	}
+
+	&-container {
+		width: 100vw;
+
+		@include tablet {
+			width: 40 * $unit;
+		}
+
+		&--bottom-center {
+			bottom: 0;
+			padding: 0;
+			left: 0;
+			transform: translateX(0);
+
+			@include tablet {
+				bottom: 1em;
+				padding: calc($unit / 2);
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
 	}
 }

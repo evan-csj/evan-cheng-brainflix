@@ -6,17 +6,16 @@
 	font-family: 'Avenir Next Bold';
 	box-sizing: border-box;
 	padding: 0;
-	margin: 0;
 	border: 0;
 	outline: none;
 	list-style: none;
 	text-decoration: none;
-	color: $bf-black;
 }
 
 body {
 	width: 100vw;
 	background-color: $bf-white;
+	color: $bf-black;
 }
 
 ::-webkit-scrollbar {
@@ -83,6 +82,10 @@ h3 {
 
 p {
 	@extend %body-copy;
+}
+
+a {
+	color: $bf-black;
 }
 
 label {
