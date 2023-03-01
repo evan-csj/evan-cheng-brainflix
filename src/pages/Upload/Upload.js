@@ -55,7 +55,7 @@ function Upload(props) {
 									required
 									onChange={event => {
 										setTextAreaRows(
-											HandleChange(event, width)
+											HandleChange(event, width, 'upload')
 										);
 									}}
 								/>
@@ -71,7 +71,14 @@ function Upload(props) {
 								alt="publish"
 							/>
 						</button>
-						<button type="button" className="button--reverse" onClick={() => {navigate('/home'); props.cancel()}}>
+						<button
+							type="button"
+							className="button--reverse"
+							onClick={() => {
+								navigate('/home');
+								props.cancel();
+							}}
+						>
 							<span>Cancel</span>
 						</button>
 					</div>

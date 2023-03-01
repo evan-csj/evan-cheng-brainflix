@@ -1,9 +1,6 @@
-const HandleChange = (event, width) => {
-	const padding = width < 768 ? 12 : 16;
-	const lineHeight = width < 768 ? 18 : 22;
-
-	const height = event.target.scrollHeight - padding * 2;
-	const requiredRows = Math.ceil(height / lineHeight);
+const HandleChange = (event, windowWidth, type) => {
+	const input = event.target.value;
+	const requiredRows = input.split('\n').length;
 
 	return requiredRows;
 };

@@ -10,7 +10,7 @@ article {
 
 	div.avatar {
 		flex-shrink: 0;
-		background-color: $bf-silver;
+		background-color: $bf-mercury;
 	}
 
 	.comment {
@@ -25,6 +25,10 @@ article {
 			.text--number {
 				text-align: right;
 			}
+		}
+
+		p {
+			white-space: pre-wrap;
 		}
 
 		&__action {

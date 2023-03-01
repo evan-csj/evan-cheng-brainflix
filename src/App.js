@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Toast, { Success, Warn } from './components/Toast/Toast';
 import Header from './components/Header/Header';
@@ -10,10 +10,6 @@ const uploadMsg = 'Succeed to upload a video!';
 const cancelMsg = 'Cancel video upload!';
 
 function App() {
-	useEffect(() => {
-		document.title = 'BrainFlix';
-	}, []);
-
 	const videoUpload = () => {
 		Success(uploadMsg);
 	};

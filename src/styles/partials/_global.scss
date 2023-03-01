@@ -257,6 +257,9 @@ input {
 
 	&--upload {
 		min-height: $line-height-mobile * 3 + $input-padding-mobile * 2;
+		@include tablet {
+			min-height: $line-height-tablet * 3 + $input-padding-tablet * 2;
+		}
 	}
 }
 
