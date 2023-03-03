@@ -3,7 +3,7 @@
 
 * {
 	margin: 0;
-	font-family: 'Avenir Next Bold';
+	font-family: 'Avenir Next Demi';
 	box-sizing: border-box;
 	padding: 0;
 	border: 0;
@@ -73,6 +73,9 @@ body {
 
 h1 {
 	@extend %page-header;
+	@include tablet {
+		font-family: 'Avenir Next Bold';
+	}
 }
 
 h2 {
@@ -104,13 +107,12 @@ label {
 	line-height: normal;
 
 	&--number {
-		font-family: 'Avenir Next Regular';
 		color: $bf-silver;
 	}
 
 	&--name {
 		color: $bf-dark-black;
-		font-family: 'Avenir Next Bold';
+		font-family: 'Avenir Next Demi';
 	}
 }
 

@@ -65,6 +65,13 @@ $line-height-tablet: 22px;
 }
 
 @font-face {
+	font-family: 'Avenir Next Demi';
+	src: url(../../assets/font/AvenirNextLTPro-Demi.otf) format('opentype'),
+		url(../../assets/font/AlternativeFiles/AvenirNextLTProDemi.ttf)
+			format('truetype');
+}
+
+@font-face {
 	font-family: 'Avenir Next Regular';
 	src: url(../../assets/font/AvenirNextLTPro-Regular.otf) format('opentype'),
 		url(../../assets/font/AlternativeFiles/AvenirNextLTPro.ttf)
