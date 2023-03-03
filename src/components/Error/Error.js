@@ -11,10 +11,10 @@ function Error() {
 			<div className="error-page">
 				<h1>Oops!</h1>
 				<h2>Page not found</h2>
-				<p>
-					The page you are looking for doesn't exit. Please go back to
-					home page.
-				</p>
+				<div>
+					<p>The page you are looking for doesn't exit.</p>
+					<p>Please go back to home page.</p>
+				</div>
 				<button className="button" onClick={() => navigate('/home')}>
 					<span>Home</span>
 				</button>
