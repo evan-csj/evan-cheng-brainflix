@@ -240,15 +240,19 @@ input {
 
 .text-area {
 	&--comment {
+		min-height: $line-height-mobile * 4 + $input-padding-mobile * 2;
+
 		@include tablet {
-			padding: $input-padding-tablet;
+			min-height: auto;
 		}
 	}
 
-	&--oneline {
-		min-height: $line-height-mobile * 4 + $input-padding-mobile * 2;
-		@include tablet {
-			min-height: auto;
+	@include tablet {
+		&--multipleline {
+			padding: $input-padding-tablet;
+		}
+
+		&--oneline {
 			height: 40px;
 			padding: calc((40px - $line-height-tablet) / 2)
 				$input-padding-tablet;

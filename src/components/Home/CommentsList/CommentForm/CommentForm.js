@@ -18,11 +18,11 @@ function Form(props) {
 			<div className="form-input__unit">
 				<label htmlFor="content">Join the conversation</label>
 				<textarea
-					className={
+					className={`text-area--comment ${
 						textAreaRows > 1
-							? 'text-area--comment'
+							? 'text-area--multipleline'
 							: 'text-area--oneline'
-					}
+					}`}
 					type="textarea"
 					name="content"
 					id="content"

@@ -1,6 +1,8 @@
 import dayjs from 'dayjs';
-const updateLocale = require('dayjs/plugin/updateLocale');
-const relativeTime = require('dayjs/plugin/relativeTime');
+import updateLocale from 'dayjs/plugin/updateLocale';
+import relativeTime from 'dayjs/plugin/relativeTime';
+// const updateLocale = require('dayjs/plugin/updateLocale');
+// const relativeTime = require('dayjs/plugin/relativeTime');
 
 const thresholds = [
 	{ l: 's', r: 1 },
