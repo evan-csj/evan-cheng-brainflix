@@ -1,0 +1,30 @@
+@import '../../styles/partials/mixins';
+
+.error-page {
+	@include margin-LR;
+	@include flex-pattern;
+	@include flex-gap;
+	align-items: center;
+	padding-top: 40px;
+
+    @include tablet {
+        padding-top: 56px;
+    }
+
+	@include desktop {
+		@include width-grid(12);
+	}
+
+	h1 {
+		font-size: 72px;
+		line-height: 72px;
+		@include tablet {
+			font-size: 96px;
+			line-height: 96px;
+		}
+	}
+
+	p {
+		text-align: center;
+	}
+}

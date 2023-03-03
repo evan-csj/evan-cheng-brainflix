@@ -4,6 +4,7 @@ import Toast, { Success, Warn } from './components/Toast/Toast';
 import Header from './components/Header/Header';
 import VideoPlayer from './components/Home/VideoPlayer';
 import Upload from './pages/Upload/Upload';
+import Error from './components/Error/Error';
 import './App.scss';
 
 const uploadMsg = 'Succeed to upload a video!';
@@ -25,6 +26,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<VideoPlayer />} />
 					<Route path="/home" element={<VideoPlayer />} />
+					<Route path="/video" element={<VideoPlayer />} />
 					<Route path="/video/:videoId" element={<VideoPlayer />} />
 					<Route
 						path="/upload"
@@ -35,7 +37,7 @@ function App() {
 							/>
 						}
 					/>
-					<Route path="/*" element={<VideoPlayer />} />
+					<Route path="/*" element={<Error />} />
 				</Routes>
 			</BrowserRouter>
 			<Toast />
