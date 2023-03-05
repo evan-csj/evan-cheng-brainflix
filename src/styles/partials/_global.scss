@@ -3,10 +3,9 @@
 
 * {
 	margin: 0;
-	font-family: 'Avenir Next Bold';
+	font-family: 'Avenir Next Demi';
 	box-sizing: border-box;
 	padding: 0;
-	margin: 0;
 	border: 0;
 	outline: none;
 	list-style: none;
@@ -16,6 +15,7 @@
 body {
 	width: 100vw;
 	background-color: $bf-white;
+	color: $bf-black;
 }
 
 ::-webkit-scrollbar {
@@ -24,6 +24,11 @@ body {
 
 ::placeholder {
 	color: $bf-dark-black;
+}
+
+::selection {
+	background: $bf-blue;
+	color: $bf-white;
 }
 
 %page-header {
@@ -68,6 +73,9 @@ body {
 
 h1 {
 	@extend %page-header;
+	@include tablet {
+		font-family: 'Avenir Next Bold';
+	}
 }
 
 h2 {
@@ -84,6 +92,10 @@ p {
 	@extend %body-copy;
 }
 
+a {
+	color: $bf-black;
+}
+
 label {
 	@extend %label;
 	text-transform: uppercase;
@@ -95,13 +107,12 @@ label {
 	line-height: normal;
 
 	&--number {
-		font-family: 'Avenir Next Regular';
 		color: $bf-silver;
 	}
 
 	&--name {
 		color: $bf-dark-black;
-		font-family: 'Avenir Next Bold';
+		font-family: 'Avenir Next Demi';
 	}
 }
 
@@ -127,6 +138,12 @@ label {
 
 	&--button {
 		height: 20px;
+		width: 20px;
+	}
+
+	&--action {
+		height: 20px;
+		cursor: pointer;
 	}
 }
 
@@ -134,26 +151,39 @@ label {
 	position: relative;
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	background-color: $bf-blue;
+	border: 0;
+	height: 40px;
+	min-width: 150px;
+	border-radius: $radius;
 
-	button {
-		flex-grow: 1;
-		text-transform: uppercase;
-		background-color: $bf-blue;
-		border: 0;
+	&:hover {
+		background-color: $bf-dark-blue;
+		cursor: pointer;
+	}
+
+	span {
+		display: inline-block;
+		@extend %button;
+		line-height: normal;
 		color: $bf-white;
-		height: 40px;
-		min-width: 150px;
-		border-radius: $radius;
+	}
 
+	&--reverse {
+		@extend .button;
+		background-color: $bf-white;
 		&:hover {
-			background-color: $bf-dark-blue;
-			cursor: pointer;
+			background-color: $bf-white;
+			cursor: auto;
 		}
-
 		span {
-			display: inline-block;
-			@extend %button;
-			line-height: normal;
+			color: $bf-blue;
+			&:hover {
+				color: $bf-dark-blue;
+				cursor: pointer;
+			}
 		}
 	}
 }
@@ -169,6 +199,12 @@ label {
 		width: $avatar-tablet;
 		height: $avatar-tablet;
 	}
+}
+
+.form-input__unit {
+	@include flex-pattern;
+	gap: 0;
+	flex: 1;
 }
 
 input,
@@ -196,25 +232,44 @@ textarea {
 }
 
 input {
-	height: 36px;
+	height: $input-height-mobile;
 
 	@include tablet {
-		height: 40px;
+		height: $input-height-tablet;
 		padding: $input-padding-tablet;
 	}
 }
 
-textarea {
-	min-height: $line-height-mobile * 4 + $input-padding-mobile * 2;
+.text-area {
+	&--comment {
+		min-height: $line-height-mobile * 4 + $input-padding-mobile * 2;
+
+		@include tablet {
+			min-height: auto;
+		}
+	}
 
 	@include tablet {
-		min-height: auto;
-		padding: $input-padding-tablet;
+		&--multipleline {
+			max-height: auto;
+			padding: $input-padding-tablet;
+		}
 
-		&.oneline {
-			height: 40px;
-			padding: calc((40px - $line-height-tablet) / 2)
+		&--oneline {
+			max-height: $input-height-tablet;
+			padding: calc(($input-height-tablet - $line-height-tablet) / 2)
 				$input-padding-tablet;
 		}
 	}
+
+	&--upload {
+		min-height: $line-height-mobile * 3 + $input-padding-mobile * 2;
+		@include tablet {
+			min-height: $line-height-tablet * 3 + $input-padding-tablet * 2;
+		}
+	}
+}
+
+.divider {
+	@include divider('top');
 }

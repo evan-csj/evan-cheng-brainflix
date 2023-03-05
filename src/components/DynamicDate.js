@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-const updateLocale = require('dayjs/plugin/updateLocale');
-const relativeTime = require('dayjs/plugin/relativeTime');
+import updateLocale from 'dayjs/plugin/updateLocale';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 const thresholds = [
 	{ l: 's', r: 1 },
@@ -44,7 +44,10 @@ dayjs.updateLocale('en', {
 
 const DynamicDate = timestamp => {
 	const time = dayjs(timestamp);
-	if (dayjs().diff(time, 'month', true) <= 12) {
+	const diff = dayjs().diff(time, 'month', true);
+	if (diff <= 0) {
+		return '0 second ago';
+	} else if (diff <= 12) {
 		return time.fromNow();
 	} else {
 		return time.format('MM/DD/YYYY');

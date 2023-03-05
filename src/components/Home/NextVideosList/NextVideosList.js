@@ -1,7 +1,6 @@
 import React from 'react';
-
-import './NextVideosList.scss';
 import Thumbnail from './Thumbnail/Thumbnail';
+import './NextVideosList.scss';
 
 function NextVideosList(props) {
 	const thumbnailList = props.videos;
@@ -21,7 +20,6 @@ function NextVideosList(props) {
 								image={thumbnail.image}
 								title={thumbnail.title}
 								channel={thumbnail.channel}
-								changeActiveVideo={props.changeActiveVideo}
 							/>
 						);
 					})}

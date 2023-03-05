@@ -41,6 +41,8 @@ $column-desktop: 63px;
 // Input
 $input-padding-mobile: 12px;
 $input-padding-tablet: 16px;
+$input-height-mobile: 36px;
+$input-height-tablet: 40px;
 
 // Avatar
 $avatar-mobile: 36px;
@@ -61,6 +63,13 @@ $line-height-tablet: 22px;
 	font-family: 'Avenir Next Bold';
 	src: url(../../assets/font/AvenirNextLTPro-Bold.otf) format('opentype'),
 		url(../../assets/font/AlternativeFiles/AvenirNextLTProBold.ttf)
+			format('truetype');
+}
+
+@font-face {
+	font-family: 'Avenir Next Demi';
+	src: url(../../assets/font/AvenirNextLTPro-Demi.otf) format('opentype'),
+		url(../../assets/font/AlternativeFiles/AvenirNextLTProDemi.ttf)
 			format('truetype');
 }
 
