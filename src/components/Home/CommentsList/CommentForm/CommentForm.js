@@ -1,36 +1,30 @@
-import React, { useState } from 'react';
-import { SubmitHandler, HandleChange } from '../../../FormChange';
-import WindowDimensions from '../../../WindowDimension';
+import React, { useRef } from 'react';
+import { SubmitHandler, TextareaAutoSize } from '../../../FormChange';
 import addCommentIcon from '../../../../assets/icons/add_comment.svg';
 import './CommentForm.scss';
 
 function Form(props) {
-	const { width } = WindowDimensions();
-	const [textAreaRows, setTextAreaRows] = useState(1);
+	const textareaRef = useRef(null);
 
 	return (
 		<form
 			onSubmit={event => {
-				SubmitHandler(event, props.addComment);
-				setTextAreaRows(1);
+				SubmitHandler(event, props.addComment, textareaRef);
 			}}
 		>
 			<div className="form-input__unit">
 				<label htmlFor="content">Join the conversation</label>
 				<textarea
-					className={`text-area--comment ${
-						textAreaRows > 1
-							? 'text-area--multipleline'
-							: 'text-area--oneline'
-					}`}
+					className="text-area--comment text-area--oneline"
+					ref={textareaRef}
 					type="textarea"
 					name="content"
 					id="content"
-					rows={textAreaRows}
+					rows={1}
 					placeholder="Add a new comment"
 					required
-					onChange={event => {
-						setTextAreaRows(HandleChange(event, width, 'comment'));
+					onInput={event => {
+						TextareaAutoSize(event, textareaRef, 'comment');
 					}}
 				/>
 			</div>

@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import { SubmitHandler, HandleChange } from '../../components/FormChange';
+import React, { useRef } from 'react';
+import { SubmitHandler, TextareaAutoSize } from '../../components/FormChange';
 import { useNavigate } from 'react-router-dom';
-import WindowDimensions from '../../components/WindowDimension';
 import preview from '../../assets/images/Upload-video-preview.jpg';
 import publish from '../../assets/icons/publish.svg';
 import './Upload.scss';
 
 function Upload(props) {
-	const [textAreaRows, setTextAreaRows] = useState(3);
-	const { width } = WindowDimensions();
 	const navigate = useNavigate();
+	const textareaRef = useRef(null);
 
 	return (
 		<>
@@ -18,8 +16,7 @@ function Upload(props) {
 				<h1>Upload Video</h1>
 				<form
 					onSubmit={event => {
-						SubmitHandler(event, undefined);
-						setTextAreaRows(3);
+						SubmitHandler(event, undefined, textareaRef);
 						navigate('/home');
 						props.upload();
 					}}
@@ -36,6 +33,7 @@ function Upload(props) {
 								</label>
 								<input
 									className="no-error"
+									id="video-title"
 									name="video-title"
 									type="text"
 									placeholder="Add a title to your video"
@@ -48,16 +46,16 @@ function Upload(props) {
 								</label>
 								<textarea
 									className="text-area--upload"
+									id="video-description"
 									type="textarea"
+									ref={textareaRef}
 									name="video-description"
-									rows={textAreaRows}
+									rows={1}
 									placeholder="Add a new comment"
 									required
-									onChange={event => {
-										setTextAreaRows(
-											HandleChange(event, width, 'upload')
-										);
-									}}
+									onInput={event =>
+										TextareaAutoSize(event, textareaRef, '')
+									}
 								/>
 							</div>
 						</div>
