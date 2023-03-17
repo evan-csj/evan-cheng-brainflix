@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_ADDRESS = 'https://project-2-api.herokuapp.com';
-const API_KEY = '611d31a1-7bdd-4769-8e5f-de260b873bb4';
+const API_PORT = 8080;
+const API_ADDRESS = `http://localhost:${API_PORT}`;
 
 const newCommentHeader = {
 	headers: {
@@ -11,9 +11,7 @@ const newCommentHeader = {
 
 const GetVideoList = async () => {
 	try {
-		const videoList = await axios.get(
-			`${API_ADDRESS}/videos?api_key=${API_KEY}`
-		);
+		const videoList = await axios.get(`${API_ADDRESS}/videos`);
 		return videoList;
 	} catch (error) {
 		console.error(error.response.data.message);
@@ -23,7 +21,7 @@ const GetVideoList = async () => {
 const GetVideoDetail = async activeVideoId => {
 	try {
 		const videoDetail = await axios.get(
-			`${API_ADDRESS}/videos/${activeVideoId}?api_key=${API_KEY}`
+			`${API_ADDRESS}/videos/${activeVideoId}`
 		);
 		return videoDetail;
 	} catch (error) {
@@ -35,7 +33,7 @@ const GetVideoDetail = async activeVideoId => {
 const PostNewComment = (videoId, newComment) => {
 	try {
 		const comment = axios.post(
-			`${API_ADDRESS}/videos/${videoId}/comments?api_key=${API_KEY}`,
+			`${API_ADDRESS}/videos/${videoId}/comments`,
 			newComment,
 			newCommentHeader
 		);
@@ -48,7 +46,7 @@ const PostNewComment = (videoId, newComment) => {
 const DeleteComment = (videoId, commentId) => {
 	try {
 		const comment = axios.delete(
-			`${API_ADDRESS}/videos/${videoId}/comments/${commentId}?api_key=${API_KEY}`
+			`${API_ADDRESS}/videos/${videoId}/comments/${commentId}`
 		);
 		return comment;
 	} catch (error) {
@@ -56,4 +54,10 @@ const DeleteComment = (videoId, commentId) => {
 	}
 };
 
-export { GetVideoList, GetVideoDetail, PostNewComment, DeleteComment };
+export {
+	API_ADDRESS,
+	GetVideoList,
+	GetVideoDetail,
+	PostNewComment,
+	DeleteComment,
+};

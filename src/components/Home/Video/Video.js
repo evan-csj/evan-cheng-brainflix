@@ -1,10 +1,12 @@
 import React from 'react';
+import { API_ADDRESS } from '../../API';
 import './Video.scss';
 
 function Video(props) {
+	const videoUrl = API_ADDRESS + '/' + props.video.image;
 	return (
 		<div className="video-control">
-			<video controls poster={props.video.image}>
+			<video controls poster={videoUrl}>
 				<source src="" type="video/mp4" />
 				Your browser does not support the video tag.
 			</video>
