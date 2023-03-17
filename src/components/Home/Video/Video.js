@@ -3,7 +3,9 @@ import { API_ADDRESS } from '../../API';
 import './Video.scss';
 
 function Video(props) {
-	const videoUrl = API_ADDRESS + '/' + props.video.image;
+	const videoUrl = props.video.image
+		? API_ADDRESS + '/' + props.video.image
+		: '';
 	return (
 		<div className="video-control">
 			<video controls poster={videoUrl}>

@@ -25,7 +25,6 @@ const GetVideoDetail = async activeVideoId => {
 		);
 		return videoDetail;
 	} catch (error) {
-		console.error(error.response.data.message);
 		return error.response;
 	}
 };

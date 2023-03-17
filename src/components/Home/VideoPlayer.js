@@ -33,7 +33,7 @@ function VideoPlayer() {
 			}
 		} else {
 			GetVideoDetail(videoId).then(response => {
-				if (response.data.id !== undefined) {
+				if (response.data.hasOwnProperty('id')) {
 					setMainVideo(response.data);
 				} else {
 					const errorVideo = {
