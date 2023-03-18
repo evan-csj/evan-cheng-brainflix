@@ -13,8 +13,9 @@ import myAvatar from '../../../assets/images/Mohan-muruge.jpg';
 // scss
 import './CommentsList.scss';
 
-const errorMsg = 'Fail to leave a comment!';
-const successMsg = 'Succeed to leave a comment!';
+const postMsgError = 'Fail to leave a comment!';
+const deleteMsgError = 'Fail to delete a comment!';
+const postMsg = 'Succeed to leave a comment!';
 const deleteMsg = 'Succeed to delete a comment!';
 
 function CommentsList(props) {
@@ -38,16 +39,17 @@ function CommentsList(props) {
 					...activeVideoComments,
 				];
 				setActiveVideoComments(newVideoComments);
-				Success(successMsg);
+				Success(postMsg);
 			})
-			.catch(error => {
-				console.error(errorMsg);
-				Error(errorMsg);
+			.catch(_error => {
+				Error(postMsgError);
 			});
 	};
 
 	const deleteComment = commentId => {
-		DeleteComment(props.id, commentId);
+		DeleteComment(props.id, commentId).catch(_error => {
+			Error(deleteMsgError);
+		});
 		const newVideoComments = activeVideoComments.filter(
 			element => element.id !== commentId
 		);
