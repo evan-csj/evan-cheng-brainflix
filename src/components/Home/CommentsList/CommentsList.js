@@ -14,7 +14,7 @@ import myAvatar from '../../../assets/images/Mohan-muruge.jpg';
 import './CommentsList.scss';
 
 const postMsgError = 'Fail to leave a comment!';
-const deleteMsgError = 'Fail to delete a comment!';
+const deleteMsgError = 'Fail to delete a comment! Please refresh!';
 const postMsg = 'Succeed to leave a comment!';
 const deleteMsg = 'Succeed to delete a comment!';
 
