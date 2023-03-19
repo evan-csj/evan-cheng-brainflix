@@ -48,7 +48,7 @@ function CommentsList(props) {
 
 	const deleteComment = commentId => {
 		DeleteComment(props.id, commentId)
-			.then(response => {
+			.then(_response => {
 				Warn(deleteMsg);
 				const newVideoComments = activeVideoComments.filter(
 					element => element.id !== commentId
