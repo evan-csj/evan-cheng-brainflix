@@ -53,10 +53,18 @@ const DeleteComment = (videoId, commentId) => {
 	}
 };
 
+const PostNewVideo = newVideo => {
+	try {
+		axios.post(`${API_ADDRESS}/videos`, newVideo);
+		return;
+	} catch (error) {}
+};
+
 export {
 	API_ADDRESS,
 	GetVideoList,
 	GetVideoDetail,
 	PostNewComment,
 	DeleteComment,
+	PostNewVideo,
 };

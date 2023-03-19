@@ -23,12 +23,11 @@ function CommentsList(props) {
 	dayjs.extend(relativeTime);
 
 	const comments = props.videoComments;
-	const userName = 'First-Name Last-Name';
 	const [activeVideoComments, setActiveVideoComments] = useState(comments);
 
 	const addComment = content => {
 		const newComment = {
-			name: userName,
+			name: props.userName,
 			comment: content,
 		};
 
@@ -84,7 +83,7 @@ function CommentsList(props) {
 								index={index}
 								length={activeVideoComments.length}
 								avatar={
-									comment.name === userName ? myAvatar : ''
+									comment.name === props.userName ? myAvatar : ''
 								}
 								name={comment.name}
 								date={date}

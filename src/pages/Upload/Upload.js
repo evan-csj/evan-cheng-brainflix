@@ -1,13 +1,26 @@
 import React, { useRef } from 'react';
 import { SubmitHandler, TextareaAutoSize } from '../../components/FormChange';
 import { useNavigate } from 'react-router-dom';
-import preview from '../../assets/images/Upload-video-preview.jpg';
+import { API_ADDRESS, PostNewVideo } from '../../components/API';
 import publish from '../../assets/icons/publish.svg';
 import './Upload.scss';
 
 function Upload(props) {
 	const navigate = useNavigate();
 	const textareaRef = useRef(null);
+	const uploadImage = 'upload-video-preview.jpg';
+
+	const addVideo = (title, description) => {
+		const newVideo = {
+			title: title,
+			channel: props.userName,
+			image: uploadImage,
+			description: description,
+		};
+
+		PostNewVideo(newVideo);
+		props.upload()
+	};
 
 	return (
 		<>
@@ -16,15 +29,17 @@ function Upload(props) {
 				<h1>Upload Video</h1>
 				<form
 					onSubmit={event => {
-						SubmitHandler(event, undefined, textareaRef);
+						SubmitHandler(event, addVideo, textareaRef, 'video');
 						navigate('/home');
-						props.upload();
 					}}
 				>
 					<div className="form-input">
 						<div className="form-input--video form-input__unit">
 							<label>Video Thumbnail</label>
-							<img src={preview} alt="preview" />
+							<img
+								src={API_ADDRESS + '/' + uploadImage}
+								alt="preview"
+							/>
 						</div>
 						<div className="form-input--text">
 							<div className="form-input__unit">
@@ -34,7 +49,7 @@ function Upload(props) {
 								<input
 									className="no-error"
 									id="video-title"
-									name="video-title"
+									name="videoTitle"
 									type="text"
 									placeholder="Add a title to your video"
 									required
@@ -49,7 +64,7 @@ function Upload(props) {
 									id="video-description"
 									type="textarea"
 									ref={textareaRef}
-									name="video-description"
+									name="videoDescription"
 									rows={1}
 									placeholder="Add a new comment"
 									required

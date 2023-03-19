@@ -11,6 +11,7 @@ const uploadMsg = 'Succeed to upload a video!';
 const cancelMsg = 'Cancel video upload!';
 
 function App() {
+	const userName = 'First-Name Last-Name';
 	const videoUpload = () => {
 		Success(uploadMsg);
 	};
@@ -24,14 +25,27 @@ function App() {
 			<BrowserRouter>
 				<Header />
 				<Routes>
-					<Route path="/" element={<VideoPlayer />} />
-					<Route path="/home" element={<VideoPlayer />} />
-					<Route path="/video" element={<VideoPlayer />} />
-					<Route path="/video/:videoId" element={<VideoPlayer />} />
+					<Route
+						path="/"
+						element={<VideoPlayer userName={userName} />}
+					/>
+					<Route
+						path="/home"
+						element={<VideoPlayer userName={userName} />}
+					/>
+					<Route
+						path="/video"
+						element={<VideoPlayer userName={userName} />}
+					/>
+					<Route
+						path="/video/:videoId"
+						element={<VideoPlayer userName={userName} />}
+					/>
 					<Route
 						path="/upload"
 						element={
 							<Upload
+								userName={userName}
 								upload={videoUpload}
 								cancel={cancelUpload}
 							/>

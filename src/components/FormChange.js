@@ -15,11 +15,18 @@ const TextareaAutoSize = (event, textareaRef, type) => {
 	}
 };
 
-const SubmitHandler = (event, addComment, textareaRef) => {
+const SubmitHandler = (event, addElement, textareaRef, type) => {
 	event.preventDefault();
-	if (addComment) addComment(event.target.content.value);
-	textareaRef.current.style.height = 'auto';
-	textareaRef.current.className = 'text-area--comment text-area--oneline';
+	if (type === 'comment') {
+		addElement(event.target.content.value);
+		textareaRef.current.style.height = 'auto';
+		textareaRef.current.className = 'text-area--comment text-area--oneline';
+	}
+
+	if (type === 'video') {
+		addElement(event.target.videoTitle.value, event.target.videoDescription.value)
+	}
+
 	event.target.reset();
 };
 

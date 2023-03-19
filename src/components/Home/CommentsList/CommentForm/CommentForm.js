@@ -9,7 +9,7 @@ function Form(props) {
 	return (
 		<form
 			onSubmit={event => {
-				SubmitHandler(event, props.addComment, textareaRef);
+				SubmitHandler(event, props.addComment, textareaRef, 'comment');
 			}}
 		>
 			<div className="form-input__unit">

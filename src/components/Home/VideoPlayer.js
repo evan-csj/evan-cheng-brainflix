@@ -12,7 +12,7 @@ import NextVideo from './NextVideosList/NextVideosList';
 // scss
 import './VideoPlayer.scss';
 
-function VideoPlayer() {
+function VideoPlayer(props) {
 	const { videoId } = useParams();
 	const [mainVideo, setMainVideo] = useState(null);
 	const [sideVideo, setSideVideo] = useState(null);
@@ -74,6 +74,7 @@ function VideoPlayer() {
 							key={activeVideo.mainVideo.id}
 							id={activeVideo.mainVideo.id}
 							videoComments={activeVideo.mainVideo.comments}
+							userName={props.userName}
 						/>
 					</div>
 					<div className="text-control__next-videos">
