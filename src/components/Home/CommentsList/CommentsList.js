@@ -47,14 +47,17 @@ function CommentsList(props) {
 	};
 
 	const deleteComment = commentId => {
-		DeleteComment(props.id, commentId).catch(_error => {
-			Error(deleteMsgError);
-		});
-		const newVideoComments = activeVideoComments.filter(
-			element => element.id !== commentId
-		);
-		setActiveVideoComments(newVideoComments);
-		Warn(deleteMsg);
+		DeleteComment(props.id, commentId)
+			.then(response => {
+				Warn(deleteMsg);
+				const newVideoComments = activeVideoComments.filter(
+					element => element.id !== commentId
+				);
+				setActiveVideoComments(newVideoComments);
+			})
+			.catch(_error => {
+				Error(deleteMsgError);
+			});
 	};
 
 	return (
