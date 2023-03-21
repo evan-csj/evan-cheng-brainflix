@@ -55,8 +55,8 @@ const DeleteComment = (videoId, commentId) => {
 
 const PostNewVideo = newVideo => {
 	try {
-		axios.post(`${API_ADDRESS}/videos`, newVideo);
-		return;
+		const videos = axios.post(`${API_ADDRESS}/videos`, newVideo);
+		return videos;
 	} catch (error) {}
 };
 

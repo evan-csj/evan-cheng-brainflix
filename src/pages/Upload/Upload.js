@@ -10,18 +10,6 @@ function Upload(props) {
 	const textareaRef = useRef(null);
 	const uploadImage = 'upload-video-preview.jpg';
 
-	const addVideo = (title, description) => {
-		const newVideo = {
-			title: title,
-			channel: props.userName,
-			image: uploadImage,
-			description: description,
-		};
-
-		PostNewVideo(newVideo);
-		props.upload()
-	};
-
 	return (
 		<>
 			<div className="divider"></div>
@@ -29,8 +17,9 @@ function Upload(props) {
 				<h1>Upload Video</h1>
 				<form
 					onSubmit={event => {
-						SubmitHandler(event, addVideo, textareaRef, 'video');
+						SubmitHandler(event, props.addVideo, textareaRef, 'video');
 						navigate('/home');
+						props.upload()
 					}}
 				>
 					<div className="form-input">

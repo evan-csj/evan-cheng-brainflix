@@ -16,45 +16,43 @@ function VideoPlayer(props) {
 	const { videoId } = useParams();
 	const [mainVideo, setMainVideo] = useState(null);
 	const [sideVideo, setSideVideo] = useState(null);
+	const [fetch, setFetch] = useState(false);
 
 	useEffect(() => {
-		if (videoId === undefined) {
-			if (sideVideo === null) {
-				GetVideoList().then(response => {
-					setSideVideo(response.data);
-					GetVideoDetail(response.data[0].id).then(response => {
-						setMainVideo(response.data);
-					});
-				});
-			} else {
+		if (sideVideo === null) {
+			GetVideoList().then(response => {
+				setSideVideo(response.data);
+				setFetch(true);
+			});
+		}
+	});
+
+	useEffect(() => {
+		if (fetch) {
+			if (videoId === undefined) {
 				GetVideoDetail(sideVideo[0].id).then(response => {
 					setMainVideo(response.data);
 				});
-			}
-		} else {
-			GetVideoDetail(videoId).then(response => {
-				if (response.data.hasOwnProperty('id')) {
-					setMainVideo(response.data);
-				} else {
-					const errorVideo = {
-						title: response.data.message,
-						channel: 'No Channel',
-						description: '',
-						views: 0,
-						likes: 0,
-						timestamp: '',
-						comments: [],
-					};
-					setMainVideo(errorVideo);
-				}
-			});
-			if (sideVideo === null) {
-				GetVideoList().then(response => {
-					setSideVideo(response.data);
+			} else {
+				GetVideoDetail(videoId).then(response => {
+					if (response.data.hasOwnProperty('id')) {
+						setMainVideo(response.data);
+					} else {
+						const errorVideo = {
+							title: response.data.message,
+							channel: 'No Channel',
+							description: '',
+							views: 0,
+							likes: 0,
+							timestamp: '',
+							comments: [],
+						};
+						setMainVideo(errorVideo);
+					}
 				});
 			}
 		}
-	}, [videoId, sideVideo]);
+	}, [videoId, fetch]);
 
 	const activeVideo = {
 		mainVideo: mainVideo,

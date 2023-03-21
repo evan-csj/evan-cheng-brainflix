@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Toast, { Success, Warn } from './components/Toast/Toast';
+import { API_ADDRESS, PostNewVideo } from './components/API';
 import Header from './components/Header/Header';
 import VideoPlayer from './components/Home/VideoPlayer';
 import Upload from './pages/Upload/Upload';
@@ -12,12 +13,27 @@ const cancelMsg = 'Cancel video upload!';
 
 function App() {
 	const userName = 'First-Name Last-Name';
+	const uploadImage = 'upload-video-preview.jpg';
 	const videoUpload = () => {
 		Success(uploadMsg);
 	};
 
 	const cancelUpload = () => {
 		Warn(cancelMsg);
+	};
+
+	const addVideo = (title, description) => {
+		const newVideo = {
+			title: title,
+			channel: userName,
+			image: uploadImage,
+			description: description,
+		};
+
+		PostNewVideo(newVideo).then(response => {
+			console.log(response.data)
+		});
+
 	};
 
 	return (
@@ -45,9 +61,9 @@ function App() {
 						path="/upload"
 						element={
 							<Upload
-								userName={userName}
 								upload={videoUpload}
 								cancel={cancelUpload}
+								addVideo={addVideo}
 							/>
 						}
 					/>
