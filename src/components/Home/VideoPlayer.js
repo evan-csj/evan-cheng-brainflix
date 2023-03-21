@@ -1,5 +1,5 @@
 // Library
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { GetVideoList, GetVideoDetail } from '../API';
 
@@ -15,24 +15,27 @@ import './VideoPlayer.scss';
 function VideoPlayer(props) {
 	const { videoId } = useParams();
 	const [mainVideo, setMainVideo] = useState(null);
-	// const [sideVideo, setSideVideo] = useState(null);
-	const sideVideo = useRef(null);
+	const [sideVideo, setSideVideo] = useState(null);
 	const [fetch, setFetch] = useState(false);
 
 	useEffect(() => {
-		if (sideVideo.current === null) {
+		if (sideVideo === null) {
 			GetVideoList().then(response => {
-				// setSideVideo(response.data);
-				sideVideo.current = response.data;
+				setSideVideo(response.data);
 				setFetch(true);
 			});
 		}
-	});
+
+		if (props.sideVideo !== null) {
+			setSideVideo(props.sideVideo);
+		}
+
+	}, [props.sideVideo, sideVideo]);
 
 	useEffect(() => {
 		if (fetch) {
 			if (videoId === undefined) {
-				GetVideoDetail(sideVideo.current[0].id).then(response => {
+				GetVideoDetail(sideVideo[0].id).then(response => {
 					setMainVideo(response.data);
 				});
 			} else {
@@ -54,11 +57,11 @@ function VideoPlayer(props) {
 				});
 			}
 		}
-	}, [videoId, fetch]);
+	}, [videoId, fetch, sideVideo]);
 
 	const activeVideo = {
 		mainVideo: mainVideo,
-		sideVideo: sideVideo.current,
+		sideVideo: sideVideo,
 	};
 
 	if (mainVideo === null || sideVideo === null) {

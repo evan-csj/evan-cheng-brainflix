@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Toast, { Success, Warn } from './components/Toast/Toast';
 import { API_ADDRESS, PostNewVideo } from './components/API';
@@ -14,6 +14,7 @@ const cancelMsg = 'Cancel video upload!';
 function App() {
 	const userName = 'First-Name Last-Name';
 	const uploadImage = 'upload-video-preview.jpg';
+	const [sideVideoRef, setSideVideoRef] = useState(null);
 	const videoUpload = () => {
 		Success(uploadMsg);
 	};
@@ -31,9 +32,8 @@ function App() {
 		};
 
 		PostNewVideo(newVideo).then(response => {
-			console.log(response.data)
+			setSideVideoRef(response.data);
 		});
-
 	};
 
 	return (
@@ -43,19 +43,39 @@ function App() {
 				<Routes>
 					<Route
 						path="/"
-						element={<VideoPlayer userName={userName} />}
+						element={
+							<VideoPlayer
+								userName={userName}
+								sideVideo={sideVideoRef}
+							/>
+						}
 					/>
 					<Route
 						path="/home"
-						element={<VideoPlayer userName={userName} />}
+						element={
+							<VideoPlayer
+								userName={userName}
+								sideVideo={sideVideoRef}
+							/>
+						}
 					/>
 					<Route
 						path="/video"
-						element={<VideoPlayer userName={userName} />}
+						element={
+							<VideoPlayer
+								userName={userName}
+								sideVideo={sideVideoRef}
+							/>
+						}
 					/>
 					<Route
 						path="/video/:videoId"
-						element={<VideoPlayer userName={userName} />}
+						element={
+							<VideoPlayer
+								userName={userName}
+								sideVideo={sideVideoRef}
+							/>
+						}
 					/>
 					<Route
 						path="/upload"
