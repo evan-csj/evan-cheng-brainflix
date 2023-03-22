@@ -1,5 +1,5 @@
 import React from 'react';
-import { API_ADDRESS } from '../../API';
+import { API_ADDRESS } from '../../axios';
 import './Video.scss';
 
 function Video(props) {

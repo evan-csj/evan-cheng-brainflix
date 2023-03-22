@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { API_ADDRESS } from '../../../API';
+import { API_ADDRESS } from '../../../axios';
 import './Thumbnail.scss';
 
 function Thumbnail(props) {

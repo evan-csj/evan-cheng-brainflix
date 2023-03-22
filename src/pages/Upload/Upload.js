@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { SubmitHandler, TextareaAutoSize } from '../../components/FormChange';
+import { submitHandler, textareaAutoSize } from '../../components/formChange';
 import { useNavigate } from 'react-router-dom';
-import { API_ADDRESS, PostNewVideo } from '../../components/API';
+import { API_ADDRESS } from '../../components/axios';
 import publish from '../../assets/icons/publish.svg';
 import './Upload.scss';
 
@@ -17,9 +17,14 @@ function Upload(props) {
 				<h1>Upload Video</h1>
 				<form
 					onSubmit={event => {
-						SubmitHandler(event, props.addVideo, textareaRef, 'video');
+						submitHandler(
+							event,
+							props.addVideo,
+							textareaRef,
+							'video'
+						);
 						navigate('/home');
-						props.upload()
+						props.upload();
 					}}
 				>
 					<div className="form-input">
@@ -58,7 +63,7 @@ function Upload(props) {
 									placeholder="Add a new comment"
 									required
 									onInput={event =>
-										TextareaAutoSize(event, textareaRef, '')
+										textareaAutoSize(event, textareaRef, '')
 									}
 								/>
 							</div>

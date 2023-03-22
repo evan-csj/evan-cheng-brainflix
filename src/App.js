@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Toast, { Success, Warn } from './components/Toast/Toast';
-import { API_ADDRESS, PostNewVideo } from './components/API';
+import { postNewVideo } from './components/axios';
 import Header from './components/Header/Header';
 import VideoPlayer from './components/Home/VideoPlayer';
 import Upload from './pages/Upload/Upload';
@@ -31,7 +31,7 @@ function App() {
 			description: description,
 		};
 
-		PostNewVideo(newVideo).then(response => {
+		postNewVideo(newVideo).then(response => {
 			setSideVideoRef(response.data);
 		});
 	};

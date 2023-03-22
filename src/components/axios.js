@@ -9,7 +9,7 @@ const newCommentHeader = {
 	},
 };
 
-const GetVideoList = async () => {
+const getVideoList = async () => {
 	try {
 		const videoList = await axios.get(`${API_ADDRESS}/videos`);
 		return videoList;
@@ -18,7 +18,7 @@ const GetVideoList = async () => {
 	}
 };
 
-const GetVideoDetail = async activeVideoId => {
+const getVideoDetail = async activeVideoId => {
 	try {
 		const videoDetail = await axios.get(
 			`${API_ADDRESS}/videos/${activeVideoId}`
@@ -29,7 +29,7 @@ const GetVideoDetail = async activeVideoId => {
 	}
 };
 
-const PostNewComment = (videoId, newComment) => {
+const postNewComment = (videoId, newComment) => {
 	try {
 		const comment = axios.post(
 			`${API_ADDRESS}/videos/${videoId}/comments`,
@@ -42,7 +42,7 @@ const PostNewComment = (videoId, newComment) => {
 	}
 };
 
-const DeleteComment = (videoId, commentId) => {
+const deleteOldComment = (videoId, commentId) => {
 	try {
 		const comment = axios.delete(
 			`${API_ADDRESS}/videos/${videoId}/comments/${commentId}`
@@ -53,7 +53,7 @@ const DeleteComment = (videoId, commentId) => {
 	}
 };
 
-const PostNewVideo = newVideo => {
+const postNewVideo = newVideo => {
 	try {
 		const videos = axios.post(`${API_ADDRESS}/videos`, newVideo);
 		return videos;
@@ -62,9 +62,9 @@ const PostNewVideo = newVideo => {
 
 export {
 	API_ADDRESS,
-	GetVideoList,
-	GetVideoDetail,
-	PostNewComment,
-	DeleteComment,
-	PostNewVideo,
+	getVideoList,
+	getVideoDetail,
+	postNewComment,
+	deleteOldComment,
+	postNewVideo,
 };

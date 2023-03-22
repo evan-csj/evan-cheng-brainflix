@@ -1,8 +1,8 @@
 // Library
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { PostNewComment, DeleteComment } from '../../API';
-import DynamicDate from '../../DynamicDate';
+import { postNewComment, deleteOldComment } from '../../axios';
+import dynamicDate from '../../dynamicDate';
 import Toast, { Error, Success, Warn } from '../../Toast/Toast';
 
 // Component
@@ -31,7 +31,7 @@ function CommentsList(props) {
 			comment: content,
 		};
 
-		PostNewComment(props.id, newComment)
+		postNewComment(props.id, newComment)
 			.then(response => {
 				const newVideoComments = [
 					response.data,
@@ -46,7 +46,7 @@ function CommentsList(props) {
 	};
 
 	const deleteComment = commentId => {
-		DeleteComment(props.id, commentId)
+		deleteOldComment(props.id, commentId)
 			.then(_response => {
 				Warn(deleteMsg);
 				const newVideoComments = activeVideoComments.filter(
@@ -74,7 +74,7 @@ function CommentsList(props) {
 						return b.timestamp - a.timestamp;
 					})
 					.map((comment, index) => {
-						const date = DynamicDate(comment.timestamp);
+						const date = dynamicDate(comment.timestamp);
 
 						return (
 							<Comment
@@ -83,7 +83,9 @@ function CommentsList(props) {
 								index={index}
 								length={activeVideoComments.length}
 								avatar={
-									comment.name === props.userName ? myAvatar : ''
+									comment.name === props.userName
+										? myAvatar
+										: ''
 								}
 								name={comment.name}
 								date={date}

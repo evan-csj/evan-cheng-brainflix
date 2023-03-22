@@ -1,5 +1,5 @@
 import React from 'react';
-import DynamicDate from '../../DynamicDate';
+import dynamicDate from '../../dynamicDate';
 import viewIcon from '../../../assets/icons/views.svg';
 import likeIcon from '../../../assets/icons/likes.svg';
 
@@ -9,7 +9,7 @@ function Info(props) {
 	const videoInfo = props.video;
 	const title = videoInfo.title;
 	const channel = videoInfo.channel;
-	const date = DynamicDate(videoInfo.timestamp);
+	const date = dynamicDate(videoInfo.timestamp);
 	const views = videoInfo.views;
 	const likes = videoInfo.likes;
 
