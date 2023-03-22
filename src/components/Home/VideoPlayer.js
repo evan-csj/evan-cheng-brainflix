@@ -1,7 +1,7 @@
 // Library
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { getVideoList, getVideoDetail } from '../axios';
+import { getDefaultVideo, getVideoList, getVideoDetail } from '../axios';
 
 // Component
 import Video from './Video/Video';
@@ -36,9 +36,8 @@ function VideoPlayer(props) {
 	}, [props.sideVideo]);
 
 	useEffect(() => {
-		if (fetch) {
 			if (videoId === undefined) {
-				getVideoDetail(defaultVideo.current.id).then(response => {
+				getDefaultVideo().then(response => {
 					setMainVideo(response.data);
 				});
 			} else {
@@ -59,8 +58,7 @@ function VideoPlayer(props) {
 					}
 				});
 			}
-		}
-	}, [videoId, fetch]);
+	}, [videoId]);
 
 	const activeVideo = {
 		mainVideo: mainVideo,

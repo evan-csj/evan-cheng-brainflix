@@ -18,6 +18,15 @@ const getVideoList = async () => {
 	}
 };
 
+const getDefaultVideo = async () => {
+	try {
+		const defaultVideo = await axios.get(`${API_ADDRESS}/home`);
+		return defaultVideo;
+	} catch (error) {
+		return error.response;
+	}
+};
+
 const getVideoDetail = async activeVideoId => {
 	try {
 		const videoDetail = await axios.get(
@@ -55,13 +64,18 @@ const deleteOldComment = (videoId, commentId) => {
 
 const postNewVideo = newVideo => {
 	try {
-		const videosBrief = axios.post(`${API_ADDRESS}/videos`, newVideo, newHeader);
+		const videosBrief = axios.post(
+			`${API_ADDRESS}/videos`,
+			newVideo,
+			newHeader
+		);
 		return videosBrief;
 	} catch (error) {}
 };
 
 export {
 	API_ADDRESS,
+	getDefaultVideo,
 	getVideoList,
 	getVideoDetail,
 	postNewComment,
