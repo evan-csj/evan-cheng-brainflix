@@ -1,5 +1,5 @@
 // Library
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { GetVideoList, GetVideoDetail } from '../API';
 
@@ -16,12 +16,14 @@ function VideoPlayer(props) {
 	const { videoId } = useParams();
 	const [mainVideo, setMainVideo] = useState(null);
 	const [sideVideo, setSideVideo] = useState(null);
+	const defaultVideo = useRef(null);
 	const [fetch, setFetch] = useState(false);
 
 	useEffect(() => {
 		if (sideVideo === null) {
 			GetVideoList().then(response => {
 				setSideVideo(response.data);
+				defaultVideo.current = response.data[0];
 				setFetch(true);
 			});
 		}
@@ -29,13 +31,12 @@ function VideoPlayer(props) {
 		if (props.sideVideo !== null) {
 			setSideVideo(props.sideVideo);
 		}
-
 	}, [props.sideVideo, sideVideo]);
 
 	useEffect(() => {
 		if (fetch) {
 			if (videoId === undefined) {
-				GetVideoDetail(sideVideo[0].id).then(response => {
+				GetVideoDetail(defaultVideo.current.id).then(response => {
 					setMainVideo(response.data);
 				});
 			} else {
@@ -57,7 +58,7 @@ function VideoPlayer(props) {
 				});
 			}
 		}
-	}, [videoId, fetch, sideVideo]);
+	}, [videoId, fetch]);
 
 	const activeVideo = {
 		mainVideo: mainVideo,
