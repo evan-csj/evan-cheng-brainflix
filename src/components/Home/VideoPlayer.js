@@ -20,18 +20,20 @@ function VideoPlayer(props) {
 	const [fetch, setFetch] = useState(false);
 
 	useEffect(() => {
-		if (sideVideo === null) {
+		if (defaultVideo.current === null) {
 			GetVideoList().then(response => {
 				setSideVideo(response.data);
 				defaultVideo.current = response.data[0];
 				setFetch(true);
 			});
 		}
+	}, [sideVideo]);
 
+	useEffect(() => {
 		if (props.sideVideo !== null) {
 			setSideVideo(props.sideVideo);
 		}
-	}, [props.sideVideo, sideVideo]);
+	}, [props.sideVideo]);
 
 	useEffect(() => {
 		if (fetch) {
