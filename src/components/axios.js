@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_PORT = 8080;
 const API_ADDRESS = `http://localhost:${API_PORT}`;
 
-const newCommentHeader = {
+const newHeader = {
 	headers: {
 		'Content-Type': 'application/json',
 	},
@@ -34,7 +34,7 @@ const postNewComment = (videoId, newComment) => {
 		const comment = axios.post(
 			`${API_ADDRESS}/videos/${videoId}/comments`,
 			newComment,
-			newCommentHeader
+			newHeader
 		);
 		return comment;
 	} catch (error) {
@@ -55,8 +55,8 @@ const deleteOldComment = (videoId, commentId) => {
 
 const postNewVideo = newVideo => {
 	try {
-		const videos = axios.post(`${API_ADDRESS}/videos`, newVideo);
-		return videos;
+		const videosBrief = axios.post(`${API_ADDRESS}/videos`, newVideo, newHeader);
+		return videosBrief;
 	} catch (error) {}
 };
 
