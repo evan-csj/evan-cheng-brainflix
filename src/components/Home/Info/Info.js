@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { putMoreLikes } from '../../axios';
 import dynamicDate from '../../dynamicDate';
 import viewIcon from '../../../assets/icons/views.svg';
 import likeIcon from '../../../assets/icons/likes.svg';
@@ -11,7 +12,14 @@ function Info(props) {
 	const channel = videoInfo.channel;
 	const date = dynamicDate(videoInfo.timestamp);
 	const views = videoInfo.views;
-	const likes = videoInfo.likes;
+	const [likes, setLikes] = useState(videoInfo.likes);
+
+	const clickHandler = event => {
+		event.preventDefault();
+		putMoreLikes(props.video.id);
+		const n = Number(likes.replace(',', '')) + 1;
+		setLikes(n.toLocaleString());
+	};
 
 	return (
 		<div className="info">
@@ -34,9 +42,10 @@ function Info(props) {
 					</div>
 					<div>
 						<img
-							className="icon--data"
+							className="icon--data icon--click"
 							src={likeIcon}
 							alt="like icon"
+							onClick={clickHandler}
 						/>
 						<span className="text text--number">{likes}</span>
 					</div>

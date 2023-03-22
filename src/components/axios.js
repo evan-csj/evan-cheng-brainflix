@@ -73,6 +73,15 @@ const postNewVideo = newVideo => {
 	} catch (error) {}
 };
 
+const putMoreLikes = videoId => {
+	try {
+		const video = axios.put(`${API_ADDRESS}/videos/${videoId}/likes`);
+		return video;
+	} catch (error) {
+		console.error(error.response);
+	}
+};
+
 export {
 	API_ADDRESS,
 	getDefaultVideo,
@@ -81,4 +90,5 @@ export {
 	postNewComment,
 	deleteOldComment,
 	postNewVideo,
+	putMoreLikes,
 };
