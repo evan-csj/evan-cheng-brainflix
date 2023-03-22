@@ -7,7 +7,7 @@ function Thumbnail(props) {
 	const imageUrl = API_ADDRESS + '/' + props.image;
 
 	return (
-		<Link to={`/video/${props.id}`}>
+		<Link to={`/videos/${props.id}`}>
 			<div className="thumbnail">
 				<img src={imageUrl} alt={props.title} />
 				<div>

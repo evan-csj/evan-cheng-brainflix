@@ -60,7 +60,7 @@ function App() {
 						}
 					/>
 					<Route
-						path="/video"
+						path="/videos"
 						element={
 							<VideoPlayer
 								userName={userName}
@@ -69,7 +69,7 @@ function App() {
 						}
 					/>
 					<Route
-						path="/video/:videoId"
+						path="/videos/:videoId"
 						element={
 							<VideoPlayer
 								userName={userName}
