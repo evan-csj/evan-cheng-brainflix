@@ -1,5 +1,5 @@
 // Library
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getDefaultVideo, getVideoList, getVideoDetail } from '../axios';
 
@@ -16,15 +16,11 @@ function VideoPlayer(props) {
 	const { videoId } = useParams();
 	const [mainVideo, setMainVideo] = useState(null);
 	const [sideVideo, setSideVideo] = useState(null);
-	const defaultVideo = useRef(null);
-	const [fetch, setFetch] = useState(false);
 
 	useEffect(() => {
-		if (defaultVideo.current === null) {
+		if (sideVideo === null) {
 			getVideoList().then(response => {
 				setSideVideo(response.data);
-				defaultVideo.current = response.data[0];
-				setFetch(true);
 			});
 		}
 	}, [sideVideo]);
