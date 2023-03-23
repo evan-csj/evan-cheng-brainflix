@@ -1,9 +1,10 @@
 @import '../../../styles/partials/variables';
 @import '../../../styles/partials/mixins';
 
-.video-control {
+.video-container {
 	width: 100%;
 	background-color: $bf-dark-black;
+	position: relative;
 }
 
 video {
@@ -19,4 +20,12 @@ video {
 		@include width-grid(10);
 		padding: 0;
 	}
+}
+
+.video-controls {
+	@include padding-LR;
+	display: flex;
+	position: absolute;
+	width: 100%;
+	transform: translateY(-5 * $unit);
 }
