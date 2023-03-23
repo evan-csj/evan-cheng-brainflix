@@ -13,12 +13,17 @@ function Info(props) {
 	const date = dynamicDate(videoInfo.timestamp);
 	const views = videoInfo.views;
 	const [likes, setLikes] = useState(videoInfo.likes);
+	const [disabled, setDisabled] = useState(false);
 
 	const clickHandler = event => {
 		event.preventDefault();
-		putMoreLikes(props.video.id);
-		const n = Number(likes.replace(',', '')) + 1;
-		setLikes(n.toLocaleString());
+		if (!disabled) {
+			putMoreLikes(props.video.id);
+			const n = Number(likes.replace(',', '')) + 1;
+			setLikes(n.toLocaleString());
+			setDisabled(true);
+			setTimeout(() => setDisabled(false), 500);
+		}
 	};
 
 	return (
