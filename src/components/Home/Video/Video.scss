@@ -24,8 +24,118 @@ video {
 
 .video-controls {
 	@include padding-LR;
-	display: flex;
+	@include flex-pattern($dir: row, $ai: center);
+	gap: calc($unit/2);
 	position: absolute;
 	width: 100%;
-	transform: translateY(-5 * $unit);
+	transform: translateY(-3 * $unit);
+
+	@include tablet {
+		@include width-grid(12);
+		@include margin-LR;
+		gap: $unit;
+		padding: 0 $unit;
+		transform: translateY(-5.5 * $unit);
+	}
+
+	button {
+		background-repeat: no-repeat;
+		background-color: transparent;
+		background-position: center;
+		background-size: cover;
+		border: none;
+		cursor: pointer;
+		width: 1.75 * $unit;
+		height: 1.75 * $unit;
+
+		@include tablet {
+			width: 2.5 * $unit;
+			height: 2.5 * $unit;
+		}
+
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+
+	.play-button {
+		background-image: $play-icon;
+	}
+
+	.pause-button {
+		background-image: $pause-icon;
+	}
+
+	.play-button,
+	.pause-button {
+		width: $unit;
+		height: $unit;
+
+		@include tablet {
+			width: 1.5 * $unit;
+			height: 1.5 * $unit;
+		}
+	}
+
+	&__fullscreen {
+		background-image: $fullscreen-icon;
+	}
+
+	&__close-fullscreen {
+		background-image: $close-fullscreen-icon;
+	}
+
+	&__volume-up {
+		background-image: $volume-up-icon;
+	}
+
+	&__volume-off {
+		background-image: $volume-off-icon;
+	}
+
+	&__play-pause,
+	&__progress,
+	&__fullscreen-mute {
+		@include flex-pattern($dir: row, $ai: center);
+		background-color: rgba($bf-dark-black, 0.5);
+		border-radius: $radius;
+		padding: 0 $unit;
+		height: 2 * $unit;
+		gap: 1.5 * $unit;
+
+		@include tablet {
+			height: 4 * $unit;
+			padding: 0 2 * $unit;
+			gap: $unit;
+		}
+	}
+
+	&__fullscreen-mute {
+		@include tablet {
+			padding: 0 1.5 * $unit;
+		}
+	}
+
+	&__progress {
+		flex: 1;
+		cursor: pointer;
+
+		.progress--video[value] {
+			display: block;
+			width: 100%;
+			height: 2px;
+
+			@include tablet {
+				height: 3px;
+			}
+
+			&::-webkit-progress-value {
+				background-color: $bf-blue;
+			}
+
+			&::-webkit-progress-bar {
+				background-color: $bf-dark-black;
+			}
+		}
+	}
 }
