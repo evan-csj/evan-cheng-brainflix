@@ -2,6 +2,7 @@
 @import '../../../styles/partials/mixins';
 
 .video-container {
+	display: flex;
 	width: 100%;
 	background-color: $bf-dark-black;
 	position: relative;
@@ -23,19 +24,32 @@ video {
 }
 
 .video-controls {
-	@include padding-LR;
-	@include flex-pattern($dir: row, $ai: center);
-	gap: calc($unit/2);
+	align-self: flex-end;
 	position: absolute;
 	width: 100%;
-	transform: translateY(-3 * $unit);
+	transform: translateY(-1 * $unit);
 
 	@include tablet {
-		@include width-grid(12);
-		@include margin-LR;
-		gap: $unit;
-		padding: 0 $unit;
-		transform: translateY(-5.5 * $unit);
+		transform: translateY(-1.5 * $unit);
+	}
+
+	&__container {
+		@include padding-LR;
+		@include flex-pattern($dir: row, $ai: center);
+		gap: calc($unit/2);
+
+		@include tablet {
+			@include width-grid(12);
+			@include margin-LR;
+			padding: 0 $unit;
+			gap: $unit;
+		}
+
+		@include desktop {
+			@include width-grid(10);
+			padding: 0 2 * $unit;
+			gap: 2 * $unit;
+		}
 	}
 
 	button {

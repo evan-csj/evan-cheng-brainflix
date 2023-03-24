@@ -55,48 +55,54 @@ function Video(props) {
 				Your browser does not support the video tag.
 			</video>
 			<div className="video-controls">
-				<div className="video-controls__play-pause">
-					{playing ? (
-						<button
-							className="pause-button"
-							type="button"
-							onClick={() => playHandler('pause')}
-						></button>
-					) : (
-						<button
-							className="play-button"
-							type="button"
-							onClick={() => playHandler('play')}
-						></button>
-					)}
-				</div>
+				<div className="video-controls__container">
+					<div className="video-controls__play-pause">
+						{playing ? (
+							<button
+								className="pause-button"
+								type="button"
+								onClick={() => playHandler('pause')}
+							></button>
+						) : (
+							<button
+								className="play-button"
+								type="button"
+								onClick={() => playHandler('play')}
+							></button>
+						)}
+					</div>
 
-				<div className="video-controls__progress">
-					<progress className="progress--video" value="20" max="100">
-						{/* <span className="bar"></span> */}
-					</progress>
-				</div>
+					<div className="video-controls__progress">
+						<progress
+							className="progress--video"
+							value="20"
+							max="100"
+						>
+							{/* <span className="bar"></span> */}
+						</progress>
+					</div>
 
-				<div className='video-controls__fullscreen-mute'>
-					<button
-						className="video-controls__fullscreen"
-						type="button"
-						onClick={() => fullscreenHandler('request')}
-					></button>
+					<div className="video-controls__fullscreen-mute">
+						<button
+							className="video-controls__fullscreen"
+							type="button"
+							onClick={() => fullscreenHandler('request')}
+						></button>
 
-					{mute ? (
-						<button
-							className="video-controls__volume-off"
-							type="button"
-							onClick={() => muteHandler('unmute')}
-						></button>
-					) : (
-						<button
-							className="video-controls__volume-up"
-							type="button"
-							onClick={() => muteHandler('mute')}
-						></button>
-					)}
+						{mute ? (
+							<button
+								className="video-controls__volume-off"
+								type="button"
+								onClick={() => muteHandler('unmute')}
+							></button>
+						) : (
+							<button
+								className="video-controls__volume-up"
+								type="button"
+								onClick={() => muteHandler('mute')}
+							></button>
+						)}
+					</div>
 				</div>
 			</div>
 		</div>
