@@ -10,8 +10,10 @@ function Video(props) {
 	const [mute, setMute] = useState(false);
 	const [currentTime, setCurrentTime] = useState(0);
 	const [duration, setDuration] = useState(0);
+	const [mouseDown, setMouseDown] = useState(false);
 	const videoRef = useRef(null);
 	const progressRef = useRef(null);
+	const scrubRef = useRef(0);
 
 	const videoUrl = props.video.image
 		? API_ADDRESS + '/' + props.video.image
@@ -25,6 +27,11 @@ function Video(props) {
 			videoRef.current.pause();
 			setPlaying(false);
 		}
+	};
+
+	const endHandler = () => {
+		videoRef.current.pause();
+		setPlaying(false);
 	};
 
 	const fullscreenHandler = control => {
@@ -47,7 +54,9 @@ function Video(props) {
 
 	const progressHandler = event => {
 		const percentage =
-			(event.pageX - progressRef.current.offsetLeft) /
+			(event.pageX -
+				progressRef.current.offsetLeft -
+				progressRef.current.offsetParent.offsetLeft) /
 			progressRef.current.offsetWidth;
 		videoRef.current.currentTime = percentage * videoRef.current.duration;
 	};
@@ -58,9 +67,10 @@ function Video(props) {
 		setCurrentTime(currentTimeRef);
 		setDuration(durationRef);
 
-		if(currentTimeRef === durationRef) {
-			setPlaying(false);
-		}
+		const scrubPos =
+			(currentTimeRef / durationRef) * progressRef.current.offsetWidth;
+
+		scrubRef.current.style.transform = `translateX(${scrubPos}px)`;
 	};
 
 	const timeConvert = time => {
@@ -75,6 +85,10 @@ function Video(props) {
 				ref={videoRef}
 				poster={videoUrl}
 				onTimeUpdate={progressUpdate}
+				onClick={() =>
+					playing ? playHandler('pause') : playHandler('play')
+				}
+				onEnded={endHandler}
 			>
 				<source src={testVideo} type="video/mp4" />
 				Your browser does not support the video tag.
@@ -97,18 +111,24 @@ function Video(props) {
 						)}
 					</div>
 
-					<div className="video-controls__progress">
+					<div
+						className="video-controls__progress"
+						onClick={progressHandler}
+						onMouseMove={e => mouseDown && progressHandler(e)}
+						onMouseDown={() => setMouseDown(true)}
+						onMouseUp={() => setMouseDown(false)}
+					>
 						<progress
 							className="scrub"
 							value={currentTime}
 							min="0"
 							max={duration}
 							ref={progressRef}
-							onClick={progressHandler}
 						></progress>
 						<span className="time-text">
 							{timeConvert(currentTime)} / {timeConvert(duration)}
 						</span>
+						<div className="scrub-icon" ref={scrubRef}></div>
 					</div>
 
 					<div className="video-controls__fullscreen-mute">

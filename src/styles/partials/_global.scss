@@ -278,6 +278,7 @@ input {
 .time-text {
 	white-space: nowrap;
 	align-self: center;
+	user-select: none;
 	font-family: 'Avenir Next Regular';
 	color: $bf-white;
 	font-size: 6px;

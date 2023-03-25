@@ -52,7 +52,8 @@ video {
 		}
 	}
 
-	button {
+	button,
+	.scrub-icon {
 		background-repeat: no-repeat;
 		background-color: transparent;
 		background-position: center;
@@ -133,6 +134,7 @@ video {
 	&__progress {
 		flex: 1;
 		gap: 2 * $unit;
+		position: relative;
 
 		.scrub {
 			display: block;
@@ -150,6 +152,19 @@ video {
 
 			&::-webkit-progress-bar {
 				background-color: $bf-dark-black;
+			}
+		}
+
+		.scrub-icon {
+			position: absolute;
+			background-image: $scrub-icon;
+			opacity: 100%;
+			width: $unit;
+			height: $unit;
+
+			@include tablet {
+				width: 1.5 * $unit;
+				height: 1.5 * $unit;
 			}
 		}
 	}
