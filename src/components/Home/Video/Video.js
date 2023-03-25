@@ -1,20 +1,17 @@
 import React, { useState, useRef } from 'react';
 import { API_ADDRESS } from '../../axios';
 import './Video.scss';
-// import playIcon from '../../../assets/icons/play.svg';
-// import pauseIcon from '../../../assets/icons/pause.svg';
-// import scrubIcon from '../../../assets/icons/scrub.svg';
-// import fullscreenIcon from '../../../assets/icons/fullscreen.svg';
-// import closeFullscreenIcon from '../../../assets/icons/close_fullscreen.svg';
-// import volumeUpIcon from '../../../assets/icons/volume_up.svg';
-// import volumeOffIcon from '../../../assets/icons/volume_off.svg';
+
 const testVideo =
 	'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
 
 function Video(props) {
 	const [playing, setPlaying] = useState(false);
 	const [mute, setMute] = useState(false);
+	const [currentTime, setCurrentTime] = useState(0);
+	const [duration, setDuration] = useState(0);
 	const videoRef = useRef(null);
+	const progressRef = useRef(null);
 
 	const videoUrl = props.video.image
 		? API_ADDRESS + '/' + props.video.image
@@ -48,9 +45,37 @@ function Video(props) {
 		}
 	};
 
+	const progressHandler = event => {
+		const percentage =
+			(event.pageX - progressRef.current.offsetLeft) /
+			progressRef.current.offsetWidth;
+		videoRef.current.currentTime = percentage * videoRef.current.duration;
+	};
+
+	const progressUpdate = () => {
+		const currentTimeRef = videoRef.current.currentTime;
+		const durationRef = videoRef.current.duration;
+		setCurrentTime(currentTimeRef);
+		setDuration(durationRef);
+
+		if(currentTimeRef === durationRef) {
+			setPlaying(false);
+		}
+	};
+
+	const timeConvert = time => {
+		const m = parseInt(time / 60);
+		const s = parseInt(time).toString().padStart(2, '0');
+		return m + ':' + s;
+	};
+
 	return (
 		<div className="video-container">
-			<video ref={videoRef} poster={videoUrl}>
+			<video
+				ref={videoRef}
+				poster={videoUrl}
+				onTimeUpdate={progressUpdate}
+			>
 				<source src={testVideo} type="video/mp4" />
 				Your browser does not support the video tag.
 			</video>
@@ -74,12 +99,16 @@ function Video(props) {
 
 					<div className="video-controls__progress">
 						<progress
-							className="progress--video"
-							value="20"
-							max="100"
-						>
-							{/* <span className="bar"></span> */}
-						</progress>
+							className="scrub"
+							value={currentTime}
+							min="0"
+							max={duration}
+							ref={progressRef}
+							onClick={progressHandler}
+						></progress>
+						<span className="time-text">
+							{timeConvert(currentTime)} / {timeConvert(duration)}
+						</span>
 					</div>
 
 					<div className="video-controls__fullscreen-mute">

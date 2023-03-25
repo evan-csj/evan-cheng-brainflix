@@ -132,12 +132,13 @@ video {
 
 	&__progress {
 		flex: 1;
-		cursor: pointer;
+		gap: 2 * $unit;
 
-		.progress--video[value] {
+		.scrub {
 			display: block;
 			width: 100%;
 			height: 2px;
+			cursor: pointer;
 
 			@include tablet {
 				height: 3px;
