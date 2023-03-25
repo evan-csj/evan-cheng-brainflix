@@ -30,7 +30,8 @@ function Video(props) {
 	};
 
 	const endHandler = () => {
-		videoRef.current.pause();
+		scrubRef.current.style.transform = `translateX(0px)`;
+		videoRef.current.load();
 		setPlaying(false);
 	};
 
@@ -64,8 +65,10 @@ function Video(props) {
 	const progressUpdate = () => {
 		const currentTimeRef = videoRef.current.currentTime;
 		const durationRef = videoRef.current.duration;
-		setCurrentTime(currentTimeRef);
-		setDuration(durationRef);
+		if (!isNaN(currentTimeRef)) setCurrentTime(currentTimeRef);
+		else setCurrentTime(0);
+		if (!isNaN(durationRef)) setDuration(durationRef);
+		else setDuration(0);
 
 		const scrubPos =
 			(currentTimeRef / durationRef) * progressRef.current.offsetWidth;
@@ -74,6 +77,7 @@ function Video(props) {
 	};
 
 	const timeConvert = time => {
+		if (isNaN(time)) return '0:00';
 		const m = parseInt(time / 60);
 		const s = parseInt(time).toString().padStart(2, '0');
 		return m + ':' + s;
