@@ -82,6 +82,13 @@ const putMoreLikes = videoId => {
 	}
 };
 
+const getImagesList = () => {
+	try {
+		const imageList = axios.get(`${API_ADDRESS}/public/images`);
+		return imageList;
+	} catch (error) {}
+};
+
 export {
 	API_ADDRESS,
 	getDefaultVideo,
@@ -91,4 +98,5 @@ export {
 	deleteOldComment,
 	postNewVideo,
 	putMoreLikes,
+	getImagesList,
 };

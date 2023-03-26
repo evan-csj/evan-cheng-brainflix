@@ -13,7 +13,6 @@ import publish from '../../assets/icons/publish.svg';
 function Upload(props) {
 	const navigate = useNavigate();
 	const textareaRef = useRef(null);
-	const uploadImage = 'upload-video-preview.jpg';
 
 	return (
 		<>
@@ -35,7 +34,7 @@ function Upload(props) {
 						<div className="form-input--video form-input__unit">
 							<label>Video Thumbnail</label>
 							<img
-								src={API_ADDRESS + '/' + uploadImage}
+								src={API_ADDRESS + '/' + props.uploadImage}
 								alt="preview"
 							/>
 						</div>

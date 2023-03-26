@@ -1,8 +1,8 @@
 // Library
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Toast, { Success, Warn } from './components/Toast/Toast';
-import { postNewVideo, getVideoList } from './components/axios';
+import { postNewVideo, getVideoList, getImagesList } from './components/axios';
 
 // Component
 import Header from './components/Header/Header';
@@ -18,8 +18,10 @@ const cancelMsg = 'Cancel video upload!';
 
 function App() {
 	const userName = 'First-Name Last-Name';
-	const uploadImage = 'upload-video-preview.jpg';
+	const defaultUploadImage = 'upload-video-preview.jpg';
 	const [sideVideo, setSideVideo] = useState([]);
+	const imageListRef = useRef([]);
+	const [uploadImage, setUploadImage] = useState(defaultUploadImage);
 
 	const cancelUpload = () => {
 		Warn(cancelMsg);
@@ -48,6 +50,12 @@ function App() {
 			});
 		}
 	}, [sideVideo]);
+
+	useEffect(() => {
+		getImagesList().then(response => {
+			imageListRef.current = response.data;
+		});
+	}, []);
 
 	return (
 		<div className="App">
@@ -96,6 +104,7 @@ function App() {
 							<Upload
 								cancel={cancelUpload}
 								addVideo={addVideo}
+								uploadImage={uploadImage}
 							/>
 						}
 					/>
