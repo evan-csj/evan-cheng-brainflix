@@ -1,10 +1,14 @@
+// Library
 import React, { useState } from 'react';
 import { putMoreLikes } from '../../axios';
 import dynamicDate from '../../dynamicDate';
+
+// scss
+import './Info.scss';
+
+// Static
 import viewIcon from '../../../assets/icons/views.svg';
 import likeIcon from '../../../assets/icons/likes.svg';
-
-import './Info.scss';
 
 function Info(props) {
 	const videoInfo = props.video;

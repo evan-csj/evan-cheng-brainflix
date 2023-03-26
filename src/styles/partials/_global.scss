@@ -283,6 +283,7 @@ input {
 	color: $bf-white;
 	font-size: 6px;
 	line-height: 6px;
+	transform: translateY(1px);
 
 	@include tablet {
 		font-size: 14px;

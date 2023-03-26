@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { API_ADDRESS } from '../../axios';
 import './Video.scss';
 
@@ -18,6 +18,10 @@ function Video(props) {
 	const videoUrl = props.video.image
 		? API_ADDRESS + '/' + props.video.image
 		: '';
+
+	useEffect(() => {
+		endHandler();
+	}, [props.video]);
 
 	const playHandler = control => {
 		if (control === 'play') {

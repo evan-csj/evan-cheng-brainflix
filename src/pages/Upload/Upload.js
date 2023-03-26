@@ -1,9 +1,14 @@
+// Library
 import React, { useRef } from 'react';
 import { submitHandler, textareaAutoSize } from '../../components/formChange';
 import { useNavigate } from 'react-router-dom';
 import { API_ADDRESS } from '../../components/axios';
-import publish from '../../assets/icons/publish.svg';
+
+// scss
 import './Upload.scss';
+
+// static
+import publish from '../../assets/icons/publish.svg';
 
 function Upload(props) {
 	const navigate = useNavigate();
@@ -24,7 +29,6 @@ function Upload(props) {
 							'video'
 						);
 						navigate('/home');
-						props.upload();
 					}}
 				>
 					<div className="form-input">

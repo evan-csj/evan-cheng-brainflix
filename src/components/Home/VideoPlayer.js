@@ -1,7 +1,7 @@
 // Library
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getDefaultVideo, getVideoList, getVideoDetail } from '../axios';
+import { getDefaultVideo, getVideoDetail } from '../axios';
 
 // Component
 import Video from './Video/Video';
@@ -15,53 +15,38 @@ import './VideoPlayer.scss';
 function VideoPlayer(props) {
 	const { videoId } = useParams();
 	const [mainVideo, setMainVideo] = useState(null);
-	const [sideVideo, setSideVideo] = useState(null);
 
 	useEffect(() => {
-		if (sideVideo === null) {
-			getVideoList().then(response => {
-				setSideVideo(response.data);
+		if (videoId === undefined) {
+			getDefaultVideo().then(response => {
+				setMainVideo(response.data);
+			});
+		} else {
+			getVideoDetail(videoId).then(response => {
+				if (response.data.hasOwnProperty('id')) {
+					setMainVideo(response.data);
+				} else {
+					const errorVideo = {
+						title: response.data.message,
+						channel: 'No Channel',
+						description: '',
+						views: 0,
+						likes: 0,
+						timestamp: '',
+						comments: [],
+					};
+					setMainVideo(errorVideo);
+				}
 			});
 		}
-	}, [sideVideo]);
-
-	useEffect(() => {
-		if (props.sideVideo !== null) {
-			setSideVideo(props.sideVideo);
-		}
-	}, [props.sideVideo]);
-
-	useEffect(() => {
-			if (videoId === undefined) {
-				getDefaultVideo().then(response => {
-					setMainVideo(response.data);
-				});
-			} else {
-				getVideoDetail(videoId).then(response => {
-					if (response.data.hasOwnProperty('id')) {
-						setMainVideo(response.data);
-					} else {
-						const errorVideo = {
-							title: response.data.message,
-							channel: 'No Channel',
-							description: '',
-							views: 0,
-							likes: 0,
-							timestamp: '',
-							comments: [],
-						};
-						setMainVideo(errorVideo);
-					}
-				});
-			}
 	}, [videoId]);
 
 	const activeVideo = {
 		mainVideo: mainVideo,
-		sideVideo: sideVideo,
+		sideVideo: props.sideVideo,
 	};
 
-	if (mainVideo === null || sideVideo === null) {
+	if (activeVideo.mainVideo === null || activeVideo.sideVideo === null) {
 		return null;
 	} else {
 		return (
