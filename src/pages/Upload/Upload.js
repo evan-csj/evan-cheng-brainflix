@@ -1,11 +1,13 @@
 // Library
-import React, { useRef } from 'react';
-import { submitHandler, textareaAutoSize } from '../../components/formChange';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Dropdown from 'react-dropdown';
+import { submitHandler, textareaAutoSize } from '../../components/formChange';
 import { API_ADDRESS } from '../../components/axios';
 
 // scss
 import './Upload.scss';
+import 'react-dropdown/style.css';
 
 // static
 import publish from '../../assets/icons/publish.svg';
@@ -13,6 +15,7 @@ import publish from '../../assets/icons/publish.svg';
 function Upload(props) {
 	const navigate = useNavigate();
 	const textareaRef = useRef(null);
+	const [uploadImage, setUploadImage] = useState(props.defaultImage);
 
 	return (
 		<>
@@ -34,8 +37,17 @@ function Upload(props) {
 						<div className="form-input--video form-input__unit">
 							<label>Video Thumbnail</label>
 							<img
-								src={API_ADDRESS + '/' + props.uploadImage}
+								src={API_ADDRESS + '/' + uploadImage}
 								alt="preview"
+							/>
+							<Dropdown
+								options={props.imageList}
+								value={uploadImage}
+								onChange={event => {
+									props.updateUploadImage(event);
+									setUploadImage(event.value);
+								}}
+								placeholder="Select an image"
 							/>
 						</div>
 						<div className="form-input--text">

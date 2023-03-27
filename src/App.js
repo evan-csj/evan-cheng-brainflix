@@ -21,7 +21,7 @@ function App() {
 	const defaultUploadImage = 'upload-video-preview.jpg';
 	const [sideVideo, setSideVideo] = useState([]);
 	const imageListRef = useRef([]);
-	const [uploadImage, setUploadImage] = useState(defaultUploadImage);
+	const uploadImage = useRef(defaultUploadImage);
 
 	const cancelUpload = () => {
 		Warn(cancelMsg);
@@ -31,7 +31,7 @@ function App() {
 		const newVideo = {
 			title: title,
 			channel: userName,
-			image: uploadImage,
+			image: uploadImage.current,
 			description: description,
 		};
 
@@ -56,6 +56,10 @@ function App() {
 			imageListRef.current = response.data;
 		});
 	}, []);
+
+	const updateUploadImage = event => {
+		uploadImage.current = event.value;
+	};
 
 	return (
 		<div className="App">
@@ -104,7 +108,9 @@ function App() {
 							<Upload
 								cancel={cancelUpload}
 								addVideo={addVideo}
-								uploadImage={uploadImage}
+								imageList={imageListRef.current}
+								defaultImage={defaultUploadImage}
+								updateUploadImage={updateUploadImage}
 							/>
 						}
 					/>

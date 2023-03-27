@@ -54,13 +54,20 @@ function VideoPlayer(props) {
 				<Video video={activeVideo.mainVideo} />
 				<div className="text-control">
 					<div className="text-control__current-video">
-						<Info video={activeVideo.mainVideo} />
-						<Comments
-							key={activeVideo.mainVideo.id}
-							id={activeVideo.mainVideo.id}
-							videoComments={activeVideo.mainVideo.comments}
-							userName={props.userName}
-						/>
+						<>
+							<Info
+								key={activeVideo.mainVideo.id}
+								video={activeVideo.mainVideo}
+							/>
+						</>
+						<>
+							<Comments
+								key={activeVideo.mainVideo.id}
+								id={activeVideo.mainVideo.id}
+								videoComments={activeVideo.mainVideo.comments}
+								userName={props.userName}
+							/>
+						</>
 					</div>
 					<div className="text-control__next-videos">
 						<NextVideo

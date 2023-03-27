@@ -23,7 +23,10 @@ function Info(props) {
 		event.preventDefault();
 		if (!disabled) {
 			putMoreLikes(props.video.id);
-			const n = Number(likes.replace(',', '')) + 1;
+			const n =
+				likes.indexOf(',') > -1
+					? Number(likes.replace(',', '')) + 1
+					: Number(likes) + 1;
 			setLikes(n.toLocaleString());
 			setDisabled(true);
 			setTimeout(() => setDisabled(false), 500);

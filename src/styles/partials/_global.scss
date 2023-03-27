@@ -208,7 +208,6 @@ label {
 .form-input__unit {
 	@include flex-pattern;
 	gap: 0;
-	flex: 1;
 }
 
 input,
@@ -293,4 +292,30 @@ input {
 
 .divider {
 	@include divider('top');
+}
+
+.Dropdown {
+	&-root {
+		margin-top: $gutter-mobile;
+		@include tablet {
+			margin-top: $gutter-tablet;
+		}
+		@extend %body-copy;
+	}
+
+	&-control {
+		border-radius: $radius;
+	}
+
+	&-option {
+		&:hover {
+			background-color: $bf-blue;
+			color: $bf-white;
+		}
+
+		&.is-selected {
+			background-color: $bf-dark-blue;
+			color: $bf-white;
+		}
+	}
 }
