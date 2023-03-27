@@ -1,4 +1,4 @@
-const TextareaAutoSize = (event, textareaRef, type) => {
+const textareaAutoSize = (event, textareaRef, type) => {
 	if (textareaRef.current) {
 		textareaRef.current.style.height = 'auto';
 		if (type === 'comment') {
@@ -15,12 +15,22 @@ const TextareaAutoSize = (event, textareaRef, type) => {
 	}
 };
 
-const SubmitHandler = (event, addComment, textareaRef) => {
+const submitHandler = (event, addElement, textareaRef, type) => {
 	event.preventDefault();
-	if (addComment) addComment(event.target.content.value);
-	textareaRef.current.style.height = 'auto';
-	textareaRef.current.className = 'text-area--comment text-area--oneline';
+	if (type === 'comment') {
+		addElement(event.target.content.value);
+		textareaRef.current.style.height = 'auto';
+		textareaRef.current.className = 'text-area--comment text-area--oneline';
+	}
+
+	if (type === 'video') {
+		addElement(
+			event.target.videoTitle.value,
+			event.target.videoDescription.value
+		);
+	}
+
 	event.target.reset();
 };
 
-export { SubmitHandler, TextareaAutoSize };
+export { submitHandler, textareaAutoSize };

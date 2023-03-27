@@ -7,7 +7,7 @@
 	& > p {
 		@include tablet {
 			padding-top: calc($gutter-tablet / 2);
-		}		
+		}
 		@include desktop {
 			padding-top: $gutter-desktop;
 		}
@@ -16,7 +16,7 @@
 	&__form {
 		@include flex-pattern(row);
 		@include padding-TB;
-		@include divider("bottom");
+		@include divider('bottom');
 		@include flex-gap;
 		@include tablet {
 			align-items: flex-start;
@@ -29,6 +29,8 @@
 			transform: translateY(20px);
 		}
 
-
+		.form-input__unit {
+			flex: 1;
+		}
 	}
 }

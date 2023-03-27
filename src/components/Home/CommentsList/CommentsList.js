@@ -1,8 +1,8 @@
 // Library
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { PostNewComment, DeleteComment } from '../../API';
-import DynamicDate from '../../DynamicDate';
+import { postNewComment, deleteOldComment } from '../../axios';
+import dynamicDate from '../../dynamicDate';
 import Toast, { Error, Success, Warn } from '../../Toast/Toast';
 
 // Component
@@ -13,8 +13,9 @@ import myAvatar from '../../../assets/images/Mohan-muruge.jpg';
 // scss
 import './CommentsList.scss';
 
-const errorMsg = 'Fail to leave a comment!';
-const successMsg = 'Succeed to leave a comment!';
+const postMsgError = 'Fail to leave a comment!';
+const deleteMsgError = 'Fail to delete a comment! Please refresh!';
+const postMsg = 'Succeed to leave a comment!';
 const deleteMsg = 'Succeed to delete a comment!';
 
 function CommentsList(props) {
@@ -22,37 +23,40 @@ function CommentsList(props) {
 	dayjs.extend(relativeTime);
 
 	const comments = props.videoComments;
-	const userName = 'First-Name Last-Name';
 	const [activeVideoComments, setActiveVideoComments] = useState(comments);
 
 	const addComment = content => {
 		const newComment = {
-			name: userName,
+			name: props.userName,
 			comment: content,
 		};
 
-		PostNewComment(props.id, newComment)
+		postNewComment(props.id, newComment)
 			.then(response => {
 				const newVideoComments = [
 					response.data,
 					...activeVideoComments,
 				];
 				setActiveVideoComments(newVideoComments);
-				Success(successMsg);
+				Success(postMsg);
 			})
-			.catch(error => {
-				console.error(errorMsg);
-				Error(errorMsg);
+			.catch(_error => {
+				Error(postMsgError);
 			});
 	};
 
 	const deleteComment = commentId => {
-		DeleteComment(props.id, commentId);
-		const newVideoComments = activeVideoComments.filter(
-			element => element.id !== commentId
-		);
-		setActiveVideoComments(newVideoComments);
-		Warn(deleteMsg);
+		deleteOldComment(props.id, commentId)
+			.then(_response => {
+				Warn(deleteMsg);
+				const newVideoComments = activeVideoComments.filter(
+					element => element.id !== commentId
+				);
+				setActiveVideoComments(newVideoComments);
+			})
+			.catch(_error => {
+				Error(deleteMsgError);
+			});
 	};
 
 	return (
@@ -70,7 +74,7 @@ function CommentsList(props) {
 						return b.timestamp - a.timestamp;
 					})
 					.map((comment, index) => {
-						const date = DynamicDate(comment.timestamp);
+						const date = dynamicDate(comment.timestamp);
 
 						return (
 							<Comment
@@ -79,7 +83,9 @@ function CommentsList(props) {
 								index={index}
 								length={activeVideoComments.length}
 								avatar={
-									comment.name === userName ? myAvatar : ''
+									comment.name === props.userName
+										? myAvatar
+										: ''
 								}
 								name={comment.name}
 								date={date}

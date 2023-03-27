@@ -42,7 +42,7 @@ dayjs.updateLocale('en', {
 	},
 });
 
-const DynamicDate = timestamp => {
+const dynamicDate = timestamp => {
 	const time = dayjs(timestamp);
 	const diff = dayjs().diff(time, 'month', true);
 	if (diff <= 0) {
@@ -54,4 +54,4 @@ const DynamicDate = timestamp => {
 	}
 };
 
-export default DynamicDate;
+export default dynamicDate;

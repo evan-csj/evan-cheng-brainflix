@@ -1,13 +1,21 @@
-import React, { useRef } from 'react';
-import { SubmitHandler, TextareaAutoSize } from '../../components/FormChange';
+// Library
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import preview from '../../assets/images/Upload-video-preview.jpg';
-import publish from '../../assets/icons/publish.svg';
+import Dropdown from 'react-dropdown';
+import { submitHandler, textareaAutoSize } from '../../components/formChange';
+import { API_ADDRESS } from '../../components/axios';
+
+// scss
 import './Upload.scss';
+import 'react-dropdown/style.css';
+
+// static
+import publish from '../../assets/icons/publish.svg';
 
 function Upload(props) {
 	const navigate = useNavigate();
 	const textareaRef = useRef(null);
+	const [uploadImage, setUploadImage] = useState(props.defaultImage);
 
 	return (
 		<>
@@ -16,15 +24,31 @@ function Upload(props) {
 				<h1>Upload Video</h1>
 				<form
 					onSubmit={event => {
-						SubmitHandler(event, undefined, textareaRef);
+						submitHandler(
+							event,
+							props.addVideo,
+							textareaRef,
+							'video'
+						);
 						navigate('/home');
-						props.upload();
 					}}
 				>
 					<div className="form-input">
 						<div className="form-input--video form-input__unit">
 							<label>Video Thumbnail</label>
-							<img src={preview} alt="preview" />
+							<img
+								src={API_ADDRESS + '/' + uploadImage}
+								alt="preview"
+							/>
+							<Dropdown
+								options={props.imageList}
+								value={uploadImage}
+								onChange={event => {
+									props.updateUploadImage(event);
+									setUploadImage(event.value);
+								}}
+								placeholder="Select an image"
+							/>
 						</div>
 						<div className="form-input--text">
 							<div className="form-input__unit">
@@ -34,7 +58,7 @@ function Upload(props) {
 								<input
 									className="no-error"
 									id="video-title"
-									name="video-title"
+									name="videoTitle"
 									type="text"
 									placeholder="Add a title to your video"
 									required
@@ -49,12 +73,12 @@ function Upload(props) {
 									id="video-description"
 									type="textarea"
 									ref={textareaRef}
-									name="video-description"
+									name="videoDescription"
 									rows={1}
 									placeholder="Add a new comment"
 									required
 									onInput={event =>
-										TextareaAutoSize(event, textareaRef, '')
+										textareaAutoSize(event, textareaRef, '')
 									}
 								/>
 							</div>

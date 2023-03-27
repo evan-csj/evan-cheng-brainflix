@@ -1,9 +1,11 @@
 @import '../../../styles/partials/variables';
 @import '../../../styles/partials/mixins';
 
-.video-control {
+.video-container {
+	display: flex;
 	width: 100%;
 	background-color: $bf-dark-black;
+	position: relative;
 }
 
 video {
@@ -18,5 +20,152 @@ video {
 		@include margin-LR;
 		@include width-grid(10);
 		padding: 0;
+	}
+}
+
+.video-controls {
+	align-self: flex-end;
+	position: absolute;
+	width: 100%;
+	transform: translateY(-1 * $unit);
+
+	@include tablet {
+		transform: translateY(-1.5 * $unit);
+	}
+
+	&__container {
+		@include padding-LR;
+		@include flex-pattern($dir: row, $ai: center);
+		gap: calc($unit/2);
+
+		@include tablet {
+			@include width-grid(12);
+			@include margin-LR;
+			padding: 0 $unit;
+			gap: $unit;
+		}
+
+		@include desktop {
+			@include width-grid(10);
+			padding: 0 2 * $unit;
+			gap: 2 * $unit;
+		}
+	}
+
+	button,
+	.scrub-icon {
+		background-repeat: no-repeat;
+		background-color: transparent;
+		background-position: center;
+		background-size: cover;
+		border: none;
+		cursor: pointer;
+		width: 1.75 * $unit;
+		height: 1.75 * $unit;
+
+		@include tablet {
+			width: 2.5 * $unit;
+			height: 2.5 * $unit;
+		}
+
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+
+	.play-button {
+		background-image: $play-icon;
+	}
+
+	.pause-button {
+		background-image: $pause-icon;
+	}
+
+	.play-button,
+	.pause-button {
+		width: $unit;
+		height: $unit;
+
+		@include tablet {
+			width: 1.5 * $unit;
+			height: 1.5 * $unit;
+		}
+	}
+
+	&__fullscreen {
+		background-image: $fullscreen-icon;
+	}
+
+	&__close-fullscreen {
+		background-image: $close-fullscreen-icon;
+	}
+
+	&__volume-up {
+		background-image: $volume-up-icon;
+	}
+
+	&__volume-off {
+		background-image: $volume-off-icon;
+	}
+
+	&__play-pause,
+	&__progress,
+	&__fullscreen-mute {
+		@include flex-pattern($dir: row, $ai: center);
+		background-color: rgba($bf-dark-black, 0.5);
+		border-radius: $radius;
+		padding: 0 $unit;
+		height: 2 * $unit;
+		gap: 1.5 * $unit;
+
+		@include tablet {
+			height: 4 * $unit;
+			padding: 0 2 * $unit;
+			gap: $unit;
+		}
+	}
+
+	&__fullscreen-mute {
+		@include tablet {
+			padding: 0 1.5 * $unit;
+		}
+	}
+
+	&__progress {
+		flex: 1;
+		gap: 2 * $unit;
+		position: relative;
+
+		.scrub {
+			display: block;
+			width: 100%;
+			height: 2px;
+			cursor: pointer;
+
+			@include tablet {
+				height: 3px;
+			}
+
+			&::-webkit-progress-value {
+				background-color: $bf-blue;
+			}
+
+			&::-webkit-progress-bar {
+				background-color: $bf-dark-black;
+			}
+		}
+
+		.scrub-icon {
+			position: absolute;
+			background-image: $scrub-icon;
+			opacity: 100%;
+			width: $unit;
+			height: $unit;
+
+			@include tablet {
+				width: 1.5 * $unit;
+				height: 1.5 * $unit;
+			}
+		}
 	}
 }

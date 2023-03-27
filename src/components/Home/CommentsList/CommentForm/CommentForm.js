@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { SubmitHandler, TextareaAutoSize } from '../../../FormChange';
+import { submitHandler, textareaAutoSize } from '../../../formChange';
 import addCommentIcon from '../../../../assets/icons/add_comment.svg';
 import './CommentForm.scss';
 
@@ -9,7 +9,7 @@ function Form(props) {
 	return (
 		<form
 			onSubmit={event => {
-				SubmitHandler(event, props.addComment, textareaRef);
+				submitHandler(event, props.addComment, textareaRef, 'comment');
 			}}
 		>
 			<div className="form-input__unit">
@@ -24,7 +24,7 @@ function Form(props) {
 					placeholder="Add a new comment"
 					required
 					onInput={event => {
-						TextareaAutoSize(event, textareaRef, 'comment');
+						textareaAutoSize(event, textareaRef, 'comment');
 					}}
 				/>
 			</div>
